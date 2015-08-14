@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+<script language="JavaScript">
+
+	var txt 		=" Laporan data kenaikan golongan Kecamatan Sentolo";
+	var kecepatan	=250;
+	var segarkan	=null;
+
+
+	function bergerak() { 
+
+		document.title  =txt;
+			txt=txt.substring(1,txt.length)+txt.charAt(0);
+			segarkan=setTimeout("bergerak()",kecepatan);
+	}
+
+	bergerak();
+
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+	<link rel="stylesheet" href="css/print.css" type="text/css"  />
+	<link rel="stylesheet" href="css/bootstrap-3.3.5-dist/css/bootstrap.css" type="text/css"/>
+
+</head>
+
+<body class="body">
+	<div id="wrapper">
+	<div class="header-laplap">
+		<div class="wrap-headerlap">
+			<div class="ruler-postion">
+				<h2 class="heading-lap">PEMERINTAH KABUPATEN KULON PROGO <br> KECAMATAN SENTOLO</h2>
+				<p class="heading-adress">Jln Jogja Km 20 Salamrejo telp 027456645 Kode Pos 55664 Yogyakarta</p>
+			<div class="img-box">		
+				<img class="resize-img" src="images/images_login/logo-lap.png">
+			</div>
+			</div>
+			<hr class="linear-grid"></hr>
+
+
+		<?php
+			include "config/koneksi.php";	
+			include "config/fungsi_indotgl.php";
+			include "config/class_paging.php";
+			include "config/kode_auto.php";
+			include "config/fungsi_combobox.php";
+			include "config/fungsi_nip.php";
+		$tampil=mysql_query("select kg.nip, p.nama, g.nama_golongan, g.nama_pangkat, kg.tgl_awal 
+			from kenaikan_golongan kg join gol_pangkat g on kg.id_golongan=g.id_golongan 
+			join pegawai p on kg.nip=p.nip where kg.tgl_akhir='0000-00-00' order by p.nama");
+		echo "<h2 class='head'>LAPORAN DATA KENAIKAN GOlONGAN PEGAWAI</h2>
+				<table class='tabel'>
+					<thead>
+  			<tr>
+			    <td>No</td>
+			    <td>Nama/NIP</td>
+				<td>Pangkat/Gol.Ruang</td>
+				<td>Isi Mutasi</td>
+				<td>Keterangan</td>
+  			</tr>
+  		</thead>";
+  		$no=1;
+
+  while($dt=mysql_fetch_array($tampil)){?>
+    	<tr>
+    		<td><?php echo $no;?></td>
+    		<td><?php echo $dt['nama']; ?><br/><?php echo $dt['nip']; ?></td>
+    		<td><?php echo $dt['nama_pangkat']; ?><br/><?php echo $dt['nama_golongan'];?></td>
+    		<td>Kenaikan Pangkat TMT : <?php echo $dt['tgl_awal']; ?></td>
+    		<td>SK Terlampir</td>
+    		<!-- <td><a href="?module=kjb&act=detail&id=<?php echo $dt['nip'] ?>">Detail Jabatan</a></td> -->
+    	</tr>
+ <?php  $no++;
+  }
+			echo "  
+	</tbody></table>
+	";
+?>
+		<div style="text-align:left;padding:20px;">
+			<input class="btn btn-primary noPrint" type="button" value="Cetak Halaman" onclick="window.print()"></div>
+		</div>
+</body>
+</html>

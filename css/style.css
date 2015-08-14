@@ -1,0 +1,680 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+@font-face {
+		    font-family: 'IstokWebRegular';
+		    src: url('font/IstokWeb-Regular-webfont.eot');
+		    src: url('font/IstokWeb-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+		         url('font/IstokWeb-Regular-webfont.woff') format('woff'),
+		         url('font/IstokWeb-Regular-webfont.ttf') format('truetype'),
+		         url('font/IstokWeb-Regular-webfont.svg#IstokWebRegular') format('svg');
+		    font-style: bold;
+
+}
+
+
+@font-face {
+		    font-family: 'TendernessRegular';
+		    src: url('font/Tenderness-webfont.eot');
+		    src: url('font/Tenderness-webfont.eot?#iefix') format('embedded-opentype'),
+		         url('font/Tenderness-webfont.woff') format('woff'),
+		         url('font/Tenderness-webfont.ttf') format('truetype'),
+		         url('font/Tenderness-webfont.svg#TendernessRegular') format('svg');
+		    font-weight: 500;
+		    font-style: normal;
+
+}
+body {
+			/* mengatur css-reset*/
+			margin:0 auto;
+			padding:0;
+			background:none repeat scroll #f9f9f9;
+}
+a{
+		text-decoration: none;
+
+}
+#container {
+			max-width: 994px;
+			min-width: 994px;
+			margin:0px 0px 0px 175px;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			border-radius:8px;
+			-moz-box-shadow: 0px 7px 7px #000000;
+			-webkit-box-shadow: 0px 7px 7px #000000;
+			box-shadow:0px 5px 2px #B4B4B4;
+
+}
+.outer-headerbox{
+		    width: 100%;
+		    height: 199px;
+		    background: hsl(0, 100%, 41%);
+/*		    background: hsl(346, 95%, 45%);*/
+    		background: -moz-linear-gradient(top,hsl(0, 100%, 48%) 0,hsl(0, 95%, 47%) 50%,hsl(0, 85%, 49%) 51%,hsl(0, 89%, 35%) 100%);
+    	/*	 background: -webkit-gradient(linear,left top,left bottom,color-stop(0,hsl(346, 95%, 45%)),color-stop(50%,hsl(348, 94%, 36%)),color-stop(51%,hsl(349, 94%, 32%)),color-stop(100%,hsl(349, 98%, 20%))); */
+		    background: -webkit-linear-gradient(top,hsl(0, 100%, 48%) 0,hsl(0, 95%, 47%) 50%,hsl(0, 85%, 49%) 51%,hsl(0, 89%, 35%) 100%);
+    		display: inline-block;
+}
+#header {
+			background:url(../images/images_header/kecamatan_sentolo_header_jogjaistimewa.jpg) repeat;
+			height: 172px;
+}
+
+.logout {
+			text-align: right;
+			padding-right: 21px;
+}
+
+.logout a {
+			color:#fff;
+			text-decoration: none;
+}
+#menu {
+		    background: -webkit-linear-gradient(hsl(0, 100%, 50%), hsl(0, 100%, 38%));
+		    height: 44px;
+		    width: 100%;
+		    margin: 0px 0px 0px 0px;
+}
+
+#content {
+    	    background: hsl(0, 0%, 95%);
+		    height: auto;
+		    padding: 10px;
+}
+.iner-container{
+		    border: 1px solid hsl(0, 0%, 88%);
+            background: -webkit-linear-gradient(hsl(0, 0%, 91%),hsl(0, 100%, 100%));
+			
+}
+#footer {
+			padding : 20px;
+			text-align:left;
+			color:#fff;
+			font-family: 'IstokWebRegular';
+			font-size :12px;
+		  	background: hsl(0, 0%, 4%);
+		  	border-top: 7px solid hsl(56, 100%, 50%);
+}
+.right-footer{
+		    float: right;
+			width: 50%;
+		    margin: -39px 2px 0px 0px;
+		    display: inline-block;
+}
+.menus-ul{
+			color: #fff;
+			font-style: normal;
+			font-size: 13px;
+}	
+ .menus-li{
+			float: right;
+		    display: inline-block;
+		    list-style: none;
+		    padding: 0px 0px 0px 18px;
+}
+.menus-ul .menus-li .menus-a{
+			color: #fff;
+			text-decoration: none;
+
+}
+.home {
+			height : 250px;
+}
+
+.judul {
+			font-size:34px;
+			font-family: 'TendernessRegular';
+			color:#fff ;
+			line-height: 109px;
+			font-weight: bold;
+}
+.clear {
+			clear:both;
+}
+
+
+
+.nav {
+			padding-top:15px;
+			padding-left:92px;
+			margin: 3px;
+}
+
+.nav li {
+			list-style:none;
+			display:block;
+			float: left;
+			padding-right:20px;
+}
+
+.nav li a {
+			padding:10px;
+			text-decoration:none;
+			color: hsl(0, 100%, 100%);
+			font-size:14px;
+			font-family: 'IstokWebRegular';
+			font-weight: bold;
+			margin-left: 20px;
+			text-shadow: 2px 2px 2px #333;
+			cursor: pointer;
+}
+
+.nav li ul {
+			padding-left:0px;
+			margin-top:5px;
+			position:absolute;
+}
+
+.nav li ul li {
+			float: none;
+		/*	border-bottom: 1px solid #fff;*/
+			padding-top: 10px;
+			padding-bottom: 5px;
+			background: -webkit-linear-gradient(hsl(0, 100%, 50%), hsl(0, 82%, 37%));
+			width: 200px;
+			color: #B2B4B7;
+	
+}
+.nav li ul li a {
+			padding:4px 0px 3px 2px;
+			display:block;
+			background:none;
+			text-align: left;
+}
+
+/* atribut */
+
+.border {
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			 border-radius: 3px;
+}
+
+.link:hover {
+			-webkit-transition: background 2s ease;
+			-moz-transition: background 2s ease;
+	        -ms-transition: background 2s ease;
+	        -o-transition: background 2s ease;
+			transition: background 2s ease;
+}
+
+.linkback:hover {
+		    color:#FCFCFC;
+}
+
+.li:hover {
+	  		color:#FFF;
+}
+
+
+
+/* FORM dan TABEL */
+.style-table{
+			padding: 5px;
+			font-family: 'IstokWebRegular';
+			font-size: 13px;
+			text-align: left;			
+}
+.inner-form {
+			padding: 27px;
+		    height: auto;
+		    display: inline-block !important;
+		    width: 95%;
+}
+.a-style{
+			text-decoration: none;
+			color:#000;
+}
+.tb-pelatihan-style{
+
+}
+.td-pelatihan{
+			
+}
+#cntn-entry{
+			padding: 20px;
+}
+#box-inptplatihan{
+			float: left;
+			margin: 11px 0px 0px 9px;
+			width: 42%;
+}
+.a-style:hover{
+			color:#F20000;
+}
+.input {
+			width :300px;
+}
+.tabel {
+			border-collapse:collapse;
+			margin-top:10px;
+			width:100%;
+
+}
+#box-pelatihan{
+			margin:33px 0px 0px 0px;
+			float: left;
+			height: 50px;
+			
+			
+}
+.btn-btnpelatihan{
+			padding: 6px;
+			background: none repeat scroll 0% 0% #1966CB;
+			color: #FFF;
+			border: none;
+			border-radius: 2px;
+			cursor: pointer;
+			font-size: 12px;
+}	
+.btn-btnpelatihan-batal{
+			padding: 6px;
+			background: none repeat scroll 0% 0% #1966CB;
+			color: #FFF;
+			border: none;
+			border-radius: 2px;
+			cursor: pointer;
+			font-size: 12px;
+			width: 60px;
+}
+.tabel thead {
+			background:#3F3E3E;
+		    color: #fff;
+}
+.tabel td 
+{
+			border-collapse:collapse;
+			border-bottom: 1px solid hsl(0, 13%, 82%);
+			padding:4px;
+			font-family: 'IstokWebRegular';
+		 	font-size:13px;
+		    vertical-align:top;
+}
+.head {
+			font-family: 'IstokWebRegular';
+			font-size:16px;
+			text-align: left;
+			color:#000;
+			text-transform:uppercase;
+}
+.headings{
+			font-family: 'IstokWebRegular';
+			font-size:13px;
+			border-bottom: 1px solid #D2CACA;
+			color:#656565;
+			margin-top: -10px;
+		
+}
+.tabelform{
+			width: 100%;
+}
+.tabelform td {
+			font-family: 'IstokWebRegular';
+			font-size:13px;
+			color:#000000;
+}
+
+.tabpad td {
+			padding-bottom : 5px;
+			padding-right : 10px;
+}
+
+.center  {
+			text-align : center ;
+}
+
+.cent {
+		    width: 53%;
+			margin: 0px 0px 65px 169px;
+			border: 1px solid hsl(0, 0%, 85%);
+			box-shadow: 0px 0px 2px hsl(0, 0%, 88%);
+			height: 150px;
+			padding: 60px;
+			background-color: hsl(0, 100%, 100%);
+}
+/*
+.tabelform input {
+			color:rgba(0, 0, 0, 1);
+			padding:5px;
+}
+*/
+.formcontrol-select {
+		    color: hsl(0, 0%, 28%);
+		    padding: 5px;
+		    border: 1px solid hsl(0, 0%, 81%);
+		    display: inline-block;
+		    cursor: pointer;
+}
+hr{
+			border: 0.5px solid #EFEAEA;
+}
+.style-mutasi{
+			font-family: 'IstokWebRegular';
+			font-size: 13px;
+			color: #F30606;
+}
+.margin {
+			margin-top : 20px;
+}
+
+/* LAYOUT LAPORAN */
+
+.body {
+			margin:0 auto;
+			padding:0;
+}
+
+#wrapper {
+			max-width: 960px;
+			min-width: 960px;
+			margin:0 auto;
+			margin-bottom:25px;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			border-radius: 3px;
+			-moz-box-shadow: 0px 7px 7px #000000;
+			-webkit-box-shadow: 0px 7px 7px #000000;
+			box-shadow: 0px 7px 7px #000000;
+			margin-top: 20px;
+}
+#box-wrapper{
+			width: 100%;
+			background: none repeat scroll 0% 0% #86B133;
+			height: 76px;
+			margin: -30px 0px 0px 0px;
+}
+
+/* REGISTRASI PEGAWAI */
+#container-pegawai {
+			width:900px;
+			height: auto;
+			margin: 0 auto;
+			margin-top: 3px auto;
+			background:none repeat scroll 0% 0% #FFF;
+			padding:10px;
+	
+	
+}
+#box-isireg {
+			padding: 50px
+}
+.style-heading {
+			text-align:center;
+			color:#fff;
+			font-family:Arial,sans-serif;
+			padding: 6px;
+}
+.style-heading-min{
+			text-align:center;
+			margin: -27px 0px 0px 0px;
+			color:#fff;
+			font-family:Arial,sans-serif;
+}
+.btn-btnreg{
+			padding: 6px;
+			background: none repeat scroll 0% 0% #1966CB;
+			color: #FFF;
+			width: 15%;
+			border: none;
+			border-radius: 2px;
+			font-weight: bold;
+			cursor: pointer;
+}
+.btn-btnregmutasi{
+			padding: 3px 7px 2px 8px;
+			background: none repeat scroll 0% 0% #86B133;
+			color: #FFF;
+			border: none;
+			border-radius: 2px;
+			text-decoration: none;
+			cursor: pointer;
+			font-family: "IstokWebRegular";
+			font-size: 13px;
+}
+.hd-r {
+			background:none repeat scroll 0% 0% #535353;
+			padding:20px;
+			text-align:center;
+			margin:0px 0px 50px;
+			color:#f1f1ef;
+}
+
+.foto {
+			width:200px;
+			float:left;
+			border:4px solid #343C42;
+			margin-right: 10px;
+}
+
+.rp{
+			width:500px;
+			float:left;
+			margin-right: 10px;
+}
+.rp2{
+			width:400px;
+			float:left;
+}
+/*-------------- CONTENT HOME ----------------*/
+#content-home{
+		    width: 89%;
+			height: auto;
+}
+
+
+/*-------------- CONTENT SESSION ----------------*/
+
+.style-session{
+			font-size: 13px;
+			font-family: 'IstokWebRegular';
+			color: #7B7979;
+			text-transform: uppercase;
+}
+
+.style-sessionabsensi{
+			font-size: 14px;
+			font-family: 'IstokWebRegular';
+			color: #7B7979;
+			text-transform: uppercase;
+			text-align: center;
+}
+.position-btngolongan{
+		    margin: 3% 0px 0px 17%;
+}
+.inner-contabox{
+			width: 100%;
+			height: auto;
+			display: inline-block;
+}
+#box-session{
+			margin: -12px 0px 0px 0px;
+
+}
+#bingkai-pic{
+			width: 600px;
+			height: 331px;
+			border: 5px solid hsl(0, 100%, 100%);
+			border-radius: 6px;
+			box-shadow: 0px 0px 5px 0px #999595;
+}
+
+.header-cnter{
+			width: 80%;
+			margin-left: 97px;
+}
+.btn-absensi{
+			padding: 6px;
+			background: none repeat scroll 0% 0% #1966CB;
+			color: #FFF;
+			border: none;
+			border-radius: 2px;
+			cursor: pointer;
+			font-size: 12px;
+}
+#style-periode{
+			margin: 17px 0px 0px 0px;
+			font-size: 14px;
+			color: #EA1D1D;
+			text-align: center;
+			text-transform: uppercase;
+}
+
+/*----- CONFIG HOMEBASE --------*/
+
+.wrapper-rightcontent{
+		width: 31%;
+		float: right;
+	    margin: -2% -15% 0% 0%;
+
+}
+.wrapper-rightcontent .sidebar-rightcontent{
+	    background: hsl(0, 100%, 100%);
+		height: auto;
+		display: inline-block;
+	    padding: 7px 0px 0px 8px;
+        width: 92%;
+}
+.deskrip-gelar{
+		padding: 7px;
+	    font-family: "IstokWebRegular";
+	    font-size: 13px;
+    	background-color: hsl(0, 100%, 100%);
+	    width: 90%;
+	    color: hsl(0, 0%, 0%);
+	    text-align: justify;
+        margin: 0px 0px 18px 0px;
+}
+.inner-deskripsi{
+		font-family: Arial,sans-serif;
+		font-size:14px;
+}
+.container-middle{
+	    width: 78%;
+	    display: inline-block;
+	    height: auto;
+	    font-size: 13px;
+	    font-family: Arial,sans-serif;
+	    border: 1px solid hsl(0, 0%, 88%);
+	    padding: 14px;
+}
+.box-headercamat{
+        width: 95%;
+	    display: inline-block !important;
+	    height: 39px;
+        background: hsl(0, 100%, 42%);
+	    text-align: center;
+	    padding: 1px 0px 8px 0px;
+	    font-family: "IstokWebRegular";
+	    color: hsl(0, 100%, 100%);
+	    font-size: 13px;
+}
+.image-resizatorcamat{
+		width: 227px;
+		height: auto;
+}
+.positionimg{
+        color: hsl(196, 100%, 33%);
+}
+.resizer-homepic{
+	    width: 648px;
+		height: 400px;
+}
+.maintan-isi{
+		margin-top: 20px;
+	    line-height: 19px;
+}
+.position-headinghome{
+		margin: -20px 0px 0px 0px;
+}
+
+/*CONFIG PEGAWAI*/
+.form-controltxt{
+		padding: 6px 0px 5px 8px;
+		height: 13px;
+		display: inline-block;
+		width: 65%;
+		border: 1px solid hsl(0, 0%, 81%);
+}
+.form-controltextarea{
+	    padding: 4px 0px 0px 6px;
+	    width: 65%;
+	    height: 100px;
+	    border: 1px solid hsl(0, 0%, 81%);
+}
+.btn{
+		display: inline-block;
+	    padding: 6px 12px;
+	    margin-bottom: 0;
+	    font-size: 14px;
+	    font-weight: 400;
+	    line-height: 1.42857143;
+	    text-align: center;
+	    white-space: nowrap;
+	    vertical-align: middle;
+	    -ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	    cursor: pointer;
+	    -webkit-user-select: none;
+	    -moz-user-select: none;
+	    -ms-user-select: none;
+	    user-select: none;
+	    background-image: none;
+	    border: 1px solid hsla(0, 0%, 0%, 0);
+	    border-radius: 4px;
+}
+.btn-danger{
+        color: hsl(0, 100%, 100%);
+	    background-color: hsl(2, 64%, 58%);
+	    border-color: hsl(2, 64%, 53%);
+}
+.btn-primary {
+		color: hsl(0, 100%, 100%);
+	    background-color: hsl(208, 56%, 46%);
+	    border-color: hsl(208, 56%, 41%);
+}
+.clearfix-bottom{
+		padding-bottom: 150px;
+}
+.position-btnmutasi{
+		margin: 20px 0px 0px 18%;
+}
+.box-detailpegawai{
+		width: 100%;
+		display: inline-block;
+}
+
+/* CONFIG ABSENSI STYLE */
+
+.box-absensi{
+		width: 100%;
+		height: auto;
+}
+.absensi, .box-absensi, .inner-boxabsen{
+		border-bottom: 1px solid hsl(0, 1%, 83%);
+		padding-bottom: 7px;
+		font-family: 'IstokWebRegular';
+		font-size : 20px;
+		margin-bottom : 20px;
+		color :#1f4a83;
+		font-weight: bold;
+		text-align:center;
+ }
+.box-absensi .inner-boxabsen{
+		display: inline-block;
+
+}
+.inner-boxabsen .spacerbox{
+		display: inline-block;
+		margin: 0px -18px 31px -18px;
+
+}
+#box-btnabsen{
+	    margin: 6px 0px 0px 33%;
+	    width: 67%;
+	    display: inline-block;
+}
+#box-btnabsen .btn-length{
+		width: 100%;
+}

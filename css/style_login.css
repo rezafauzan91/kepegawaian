@@ -1,0 +1,199 @@
+/* CSS Document */
+*{
+		margin: auto;
+		padding: auto;
+		box-sizing:border-box;
+}
+body{
+		/*background-color: #FFF;*/
+		background: transparent url("../images/sentolo.jpg") no-repeat;
+		font-family:"Tahoma";
+		font-size:12px;
+		color:#FFFFFF;
+}
+.erorr{
+		background: none;
+
+}
+.header-maincntainer{
+		width: 100%;
+		display: inline-block;
+		height: 130px;
+		background: #080808 none repeat scroll 0% 0%;
+		box-shadow: 1px 1px 1px #BABABA;
+		border-bottom: 7px solid #FF0;
+}
+.control-headingwelcome{
+		text-align: center;
+		padding: 30px;
+        text-shadow: 1px 1px 1px hsl(0, 0%, 15%);
+
+}
+.deskripsi-sistem{
+		padding: 6px 31px 80px 25px;
+	    color: hsl(0, 100%, 100%);
+	    font-size: 15px;
+        text-shadow: 1px 1px 1px hsl(0, 0%, 15%);
+}
+.header-judulweb{
+		margin: 12px;
+		font-size: 19px;
+		display: block;
+}
+.header-text{
+		margin: 14px 0px 0px 30px !important;
+		float: left;
+		word-spacing: 4px;
+}
+.img-headerbox{
+		float: left;
+		position: relative;
+
+}
+.headertext-adress{
+		font-size: 14px;
+		font-style: italic;
+		word-spacing: 1px;
+}
+.clearer{
+		clear:both;
+		float:none;
+}
+
+#header{
+		background:rgba(209, 209, 209, 0.49) none repeat scroll 0% 0%;
+		padding: 10px 0px 0px 0px;
+		height:50px;
+		-moz-border-radius-topleft:7px;
+		-moz-border-radius-topright:7px;
+		font-size : 26px;
+}
+#footer{
+		background: rgba(249, 249, 249, 0.56) none repeat scroll 0% 0%;
+		padding:18px;
+		text-align:right;
+		color:#ffffff;
+		border-radius: 2px;
+}
+.resizing-img{
+		width: 70px;
+	    height: auto;
+	    display: block;
+	    margin: 17px 0px 0px 40px;
+
+}
+#middle{	
+		background: rgba(255, 255, 255, 0.37) none repeat scroll 0% 0%;
+    	padding: 23px 22px 16px 33px;
+
+}
+
+#vertical_effect{
+		height:80px;
+		margin-top:2px;
+}
+
+#form-login{
+		margin:0;
+}
+#error_login{
+		margin: auto;
+		background-color:#461f95;
+		background-image:url(images/images_login/bg_login_error.gif);
+		padding:15px;
+		padding-bottom:15px;
+		font-family:Tahoma;
+		font-weight:bold;
+		padding-top:11px;
+		-moz-border-radius:4px;
+			
+}
+#input{
+		/*background-image:url(images/images_login/bg_login_input.gif);
+		padding:7px;
+		padding-bottom:8px;
+		padding-top:8px;*/
+    	font-family: Verdana;
+	    font-size: 12px;
+	    color: #5D5959;
+	    font-weight: bold;
+	    border-radius: 2px;
+	    padding: 12px 5px;
+	    width: 73%;
+	    border: 1px solid hsl(0, 1%, 63%);
+}
+/*#input:focus{
+		border:2px solid #8EFF03;
+		margin-left:1px;
+		-moz-border-radius:5px;
+}*/
+#submit{
+		margin: 4px 2px 7px 43px;
+		background: -moz-linear-gradient(top, #0F7FAB 0%, #1B6FAD 44%, #154C8A 100%) repeat scroll 0% 0% transparent;
+		background: -webkit-linear-gradient(top, #0F7FAB 0%, #1B6FAD 44%, #154C8A 100%);
+		color: #fff;
+		border: none;
+		padding: 10px;
+	    width: 324px;
+		border-radius: 2px;
+		font-weight: bold;
+		cursor: pointer;
+}
+.img_user{
+		margin-right:3px; 
+		margin-bottom:4px; 
+}
+.img_pass{
+		margin-right:4px; 
+		margin-left:2px; 
+		margin-bottom:6px; 
+		margin-top:1px;
+}
+.position-heading{
+		text-align: center;
+}
+.img_lock{
+		margin-right:4px; 
+		margin-bottom:3px; 
+		margin-left:4px; 
+}
+a.forgot{
+		color:#FFFFFF;
+		text-decoration:none;
+}	
+a.forgot:hover{
+		color:#4b4d77;
+}
+/* Error Login */
+.klikdsini{
+		color: #fff;
+		text-decoration: none;
+}
+
+
+/*----------------------------- menu leftcontainer------------------------------*/
+#main{
+        width: 500px;
+	    margin: -204px -76% 0px 0px;
+	    float: right;
+}
+.mainerror{
+
+}
+.main-left{
+		margin: 30px 0px 0px 60px !important;
+	    float: left;
+	    display: block;	
+}
+
+.main-left .box-headerlogin{
+		display: inline-block;
+		float: left;
+		position: relative;
+	    background: hsla(0, 0%, 69%, 0.56) none repeat scroll 0% 0%;
+	    width: 70%;	
+		height: 265px;
+}
+
+/*-------------------- Wrapper laporan -----------------*/
+
