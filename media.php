@@ -29,6 +29,7 @@
 <title></title>
 	<link rel="stylesheet" href="css/style.css" type="text/css"  />
 	<link rel="stylesheet" href="css/default.css" type="text/css">
+	<link rel="stylesheet" href="css/lightbox.css" type="text/css">
 <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
 <script src="js/superfish.js" type="text/javascript"></script>
 <script src="js/hoverIntent.js" type="text/javascript"></script>
@@ -71,7 +72,7 @@
             	<li><a>Proses Pengolahan Data</a>
             		<ul>
 						<li><a class="border link linkback" href="?module=absensi">Absensi</a></li>
-		        		<li><a class="border link linkback" href="?module=kjb">Kenaikan Jabatan</a></li>
+		        		<li><a class="border link linkback" href="?module=kjb">Mutasi Jabatan</a></li>
 		        		<li><a class="border link linkback" href="?module=kg">Kenaikan Golongan</a></li>
 		        		<li><a class="border link linkback" href="?module=mutasi">Mutasi</a></li>
 		        		<li><a class="border link linkback" href="?module=pelatihan">Data Pelatihan</a></li>
@@ -118,6 +119,8 @@
 		</div>
 	</div>
 </div>
+<script src="js/lightbox.js" type="text/javascript"></script>
+
 </body>
 </html>
 

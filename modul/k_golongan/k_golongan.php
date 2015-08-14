@@ -53,7 +53,7 @@ switch($_GET[act]){
 	$_tampil=mysql_query("select p.nip, p.nama, g.nama_golongan from pegawai p join gol_pangkat g on p.id_gol=g.id_golongan where p.nip='$_GET[id]'");
 	$cr_id =mysql_query("select id_kg from kenaikan_golongan where nip='$_GET[id]' and tgl_akhir='0000-00-00'");
 	$cr_tgl =mysql_query("select tgl_awal from kenaikan_golongan where nip='$_GET[id]' and tgl_akhir='0000-00-00'");
-	$tampilJb=mysql_query("select kg.tgl_awal, kg.tgl_akhir, g.nama_golongan from kenaikan_golongan kg join gol_pangkat g on kg.id_golongan=g.id_golongan where kg.nip='$_GET[id]' order by kg.id_kg desc");
+	$tampilJb=mysql_query("select kg.no_sk, kg.foto_sk, kg.tgl_awal, kg.tgl_akhir, g.nama_golongan from kenaikan_golongan kg join gol_pangkat g on kg.id_golongan=g.id_golongan where kg.nip='$_GET[id]' order by kg.id_kg desc");
 
 	$cr_tgl_dt = mysql_fetch_array($cr_tgl);
 	$cr_id_dt = mysql_fetch_array($cr_id);
@@ -78,6 +78,7 @@ switch($_GET[act]){
 				<td>Golongan</td>
 				<td>Tgl Awal</td>
 				<td>Tgl Akhir</td>
+				<td>SK Terlampir</td>
 			</tr>
 			";
 			while($dtjb=mysql_fetch_array($tampilJb)){
@@ -90,7 +91,13 @@ switch($_GET[act]){
 			} else {
 				echo tgl_indo($dtjb['tgl_akhir']);
 			}
-
+	    echo "</td>
+	    <td>";
+	    if($dtjb['foto_sk'] != '') {
+	    	echo "<a href='sk/sk_golongan/".$dtjb['foto_sk']."' data-lightbox='$dtjb[no_sk]'>Lihat SK</a>";
+	    } else {
+	    	echo "";
+	    }
 	    echo "</td></tr>";
 	  	}
 		echo "</table>";
@@ -99,7 +106,7 @@ switch($_GET[act]){
 			<p class='headings'></p>";
 	  	while($datanya=mysql_fetch_array($_tampil)){
 
-	echo "<form action='$aksi?module=kg&act=ubahkg' method='post'>
+	echo "<form action='$aksi?module=kg&act=ubahkg' method='post' enctype='multipart/form-data'>
 		<table class='tabelform tabpad'>
 			<tr>
 				<td width='150'>Golongan Sekarang</td>
@@ -152,6 +159,10 @@ switch($_GET[act]){
 			<tr>
 				<td>Keterangan</td>
 				<td><textarea class='form-controltextarea' name='ket'></textarea></td>
+			</tr>
+			<tr>
+				<td>Lampiran SK</td>
+				<td><input type='file' name='foto_sk' class=''/></td>
 			</tr>
 			<tr>
 				<td></td>
