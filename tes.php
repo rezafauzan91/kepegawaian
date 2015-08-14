@@ -12,4 +12,5 @@ printf("%d years, %d months, %d days\n", $years, $months, $days);
 echo "tes2";
 echo "coba ngetes lg";
 echo "abc";
+echo "asoyyyy";
 ?>
