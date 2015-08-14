@@ -60,22 +60,39 @@ elseif ($module=='kg' AND $act=='ubahkg') {
 	// echo $years."<br/>";
 	// echo $rekomendasi;
 	if($rekomendasi == 'y') {
+		$lokasi_file    = $_FILES['foto_sk']['tmp_name'];
+	    $nama_file      = $_FILES['foto_sk']['name'];
+	    $acak           = rand(000000,999999);
+	    $nama_file_unik = $acak.$nama_file; 
+	    $vdir_upload    = "../../sk/sk_golongan/";
+	    move_uploaded_file($_FILES["foto_sk"]["tmp_name"],$vdir_upload . $nama_file_unik);
+
 		mysql_query("update kenaikan_golongan set tgl_akhir='$date',
 											  keterangan='$_POST[ket]'
 											  where id_kg='$_POST[idg]'");
 		mysql_query("update pegawai set id_gol='$_POST[golongan]' where nip='$_POST[user]'");
-		mysql_query("insert into kenaikan_golongan (nip,no_sk,tgl_sk,tgl_awal,id_golongan) values ('$_POST[user]','$_POST[sk]','$_POST[tgl_sk]','$_POST[tmt_sk]','$_POST[golongan]')");
+		mysql_query("insert into kenaikan_golongan (nip,no_sk,tgl_sk,tgl_awal,id_golongan,foto_sk) values ('$_POST[user]','$_POST[sk]','$_POST[tgl_sk]','$_POST[tmt_sk]','$_POST[golongan]','$nama_file_unik')");
 		header('location:../../media.php?module='.$module);
 	} elseif ($rekomendasi == 'n' && $years <= 4) {
 		echo "<script>alert('Anda Belum Bisa Naik Golongan!')</script>";
         echo "<script>history.go(-1)</script>";
 	} elseif ($rekomendasi == 'n' && $years >= 4) {
+		$lokasi_file    = $_FILES['foto_sk']['tmp_name'];
+	    $nama_file      = $_FILES['foto_sk']['name'];
+	    $acak           = rand(000000,999999);
+	    $nama_file_unik = $acak.$nama_file; 
+	    $vdir_upload    = "../../sk/sk_golongan/";
+	    move_uploaded_file($_FILES["foto_sk"]["tmp_name"],$vdir_upload . $nama_file_unik);
+
 		mysql_query("update kenaikan_golongan set tgl_akhir='$date',
 											  keterangan='$_POST[ket]'
 											  where id_kg='$_POST[idg]'");
 		mysql_query("update pegawai set id_gol='$_POST[golongan]' where nip='$_POST[user]'");
-		mysql_query("insert into kenaikan_golongan (nip,no_sk,tgl_sk, tgl_awal,id_golongan) values ('$_POST[user]','$_POST[sk]','$_POST[tgl_sk]','$_POST[tmt_sk]','$_POST[golongan]')");
+		mysql_query("insert into kenaikan_golongan (nip,no_sk,tgl_sk, tgl_awal,id_golongan,foto_sk) values ('$_POST[user]','$_POST[sk]','$_POST[tgl_sk]','$_POST[tmt_sk]','$_POST[golongan]','$nama_file_unik')");
 		header('location:../../media.php?module='.$module);
+	} else {
+		echo "<script>alert('Form wajib di isi semua!')</script>";
+        echo "<script>history.go(-1)</script>";
 	}
 }
 

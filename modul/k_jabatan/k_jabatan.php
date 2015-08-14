@@ -19,7 +19,7 @@ switch($_GET[act]){
 	default:
 	// $tanggal= date('Y-m-d');
 	$tampil=mysql_query("select * from pegawai,jabatan where pegawai.id_jab=jabatan.id_jab order by pegawai.nama");
-	echo "<div><h2 class='head'>DATA KENAIKAN JABATAN</h2></div>
+	echo "<div><h2 class='head'>DATA MUTASI JABATAN</h2></div>
 				<p class='headings'>Kecamatan sentolo</p>
 	<table class='tabel'>
 		<thead>
@@ -54,7 +54,7 @@ switch($_GET[act]){
 	$tampil=mysql_query("select p.nip, p.nama, j.n_jab from pegawai p join jabatan j on p.id_jab=j.id_jab where p.nip='$_GET[id]'");
 	$_tampil=mysql_query("select p.nip, p.nama, j.n_jab from pegawai p join jabatan j on p.id_jab=j.id_jab where p.nip='$_GET[id]'");
 	$cr_id =mysql_query("select idh from h_jabatan where nip='$_GET[id]' and tgl_kjb='0000-00-00'");
-	$tampilJb=mysql_query("select hj.tgl_ajb, hj.tgl_kjb, j.n_jab from h_jabatan hj join jabatan j on 
+	$tampilJb=mysql_query("select hj.no_sk, hj.foto_sk, hj.tgl_ajb, hj.tgl_kjb, j.n_jab from h_jabatan hj join jabatan j on 
 							hj.jabatan=j.id_jab	where hj.nip='$_GET[id]' order by hj.idh desc");
 
 	$cr_id_dt = mysql_fetch_array($cr_id);
@@ -72,13 +72,14 @@ switch($_GET[act]){
 	    		</tr>";
 	  	}
 		echo "</table>";
-	echo "<h2 class='head'>HISTORY JABATAN PEGAWAI</h2>
+	echo "<h2 class='head'>HISTORY MUTASI JABATAN PEGAWAI</h2>
 			<p class='headings'></p>
 			<table class='tabel'>
 			<tr>
 				<td>Jabatan</td>
 				<td>Tgl Awal Menjabat</td>
 				<td>Tgl Akhir Menjabat</td>
+				<td>SK Terlampir</td>
 			</tr>
 			";
 			while($dtjb=mysql_fetch_array($tampilJb)){
@@ -92,6 +93,13 @@ switch($_GET[act]){
 				echo tgl_indo($dtjb['tgl_kjb']);
 			}
 
+	    echo "</td>
+	    <td>";
+	    if($dtjb['foto_sk'] != '') {
+	    	echo "<a href='sk/sk_jabatan/".$dtjb['foto_sk']."' data-lightbox='$dtjb[no_sk]'>Lihat SK</a>";
+	    } else {
+	    	echo "";
+	    }
 	    echo "</td></tr>";
 	  	}
 		echo "</table>";
@@ -100,7 +108,7 @@ switch($_GET[act]){
 			<p class='headings'></p>";
 	  	while($datanya=mysql_fetch_array($_tampil)){
 
-	echo "<form action='$aksi?module=kjb&act=ubahjb' method='post'>
+	echo "<form action='$aksi?module=kjb&act=ubahjb' method='post' enctype='multipart/form-data'>
 		<table class='tabelform tabpad'>
 			<tr>
 				<td width='150'>Jabatan Sekarang</td>
@@ -146,6 +154,10 @@ switch($_GET[act]){
 			<tr>
 				<td>Keterangan</td>
 				<td><textarea name='ket' class='form-controltextarea'></textarea></td>
+			</tr>
+			<tr>
+				<td>Lampiran SK</td>
+				<td><input type='file' name='foto_sk' class=''/></td>
 			</tr>
 			<tr>
 				<td></td>
