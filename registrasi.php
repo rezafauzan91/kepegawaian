@@ -101,7 +101,8 @@
 						<select name="thn" id="thn" class="formcontrol-select" required>
             				<option value="none" selected="selected">Tahun*</option>
 								<?php
-									for ($i=1970; $i<=2020; $i++) {
+									$now = date('Y')-18;
+									for ($i=1950; $i<=$now; $i++) {
 									$tg = ($i<10) ? "0$i" : $i;
 									$select = ($tg==$tgl)? "selected" : "";
 									echo "<option value='$tg' $select>$tg</option>";	
@@ -121,12 +122,24 @@
 					<td><textarea name="almt" id="almt" cols="35" rows="5" class="form-controltextarea" required></textarea></td>
 				</tr>
 				<tr>
-					<td>No SK</td>
+					<td>Golongan</td>
+					<td><select name='gol' id="gol" class="formcontrol-select" required>
+						<option value='' selected >Pilih Golongan</option>";
+						<?php
+							$bagian=mysql_query("select * from gol_pangkat");
+							while($data=mysql_fetch_array($bagian)){
+				  			echo "<option value='$data[id_golongan]'>$data[nama_golongan]</option>";
+							}
+						?>
+						</select>
+				  	</td>
+				</tr>
+				<tr>
+					<td>No SK Golongan</td>
 					<td><input name="no_sk" class="form-controltxt" id="nama" type="text" required=""></td>
 				</tr>
 				<tr>
-					<td>Tanggal SK</td>
-				
+					<td>Tanggal SK Golongan</td>
 					<td><select name="tgl_sk" id="tgl_msk" class="formcontrol-select" required>
             			<option value='none' selected='selected'>Tgl*</option>
             				<?php
@@ -163,6 +176,80 @@
 						?>
 			  		</select>
 				  	</td>
+				</tr>
+				<tr>
+					<td>Lampiran SK Golongan</td>
+					<td><input name="foto_sk_golongan" id="fupload" type='file' required/></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div style="margin-bottom:2%; border-bottom: 1px solid #ccc;padding-bottom: 2%;"></div>
+					</td>
+				</tr>
+				<tr>
+					<td>Jabatan</td>
+					<td><select name="jbtn" id="jbtn" class="formcontrol-select" required>	
+						<option value='' selected >Pilih Jabatan</option>";
+						<?php
+							$jabatan=mysql_query("select * from jabatan");
+							while($data=mysql_fetch_array($jabatan)){
+							echo "<option value='$data[id_jab]'>$data[n_jab]</option>";
+							}
+						?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>No SK Jabatan</td>
+					<td><input name="no_sk_jab" class="form-controltxt" id="nama" type="text" required=""></td>
+				</tr>
+				<tr>
+					<td>Tanggal SK Jabatan</td>
+					<td><select name="tgl_sk_jab" id="tgl_msk" class="formcontrol-select" required>
+            			<option value='none' selected='selected'>Tgl*</option>
+            				<?php
+								for ($i=1; $i<=31; $i++) {
+								$tg = ($i<10) ? "0$i" : $i;
+								$select = ($tg==$tgl)? "selected" : "";
+								echo "<option value='$tg' $select>$tg</option>";	
+								}
+							?>
+					</select>
+					<select name="bln_sk_jab" id="bln_msk" class="formcontrol-select" required>
+		            	<option value='none' selected='selected'>Bulan*</option>
+						<option value='1'>Januari</option>
+						<option value='2'>Februari</option>
+						<option value='3'>Maret</option>
+						<option value='4'>April</option>
+						<option value='5'>Mei</option>
+						<option value='6'>Juni</option>
+						<option value='7'>Juli</option>
+						<option value='8'>Agustus</option>
+						<option value='9'>September</option>
+						<option value='10'>Oktober</option>
+						<option value='11'>November</option>
+						<option value='12'>Desember</option>
+					</select>
+					<select name='thn_sk_jab' id="tgl_msk" class="formcontrol-select" required>
+    					<option value='none' selected='selected'>Tahun*</option>";
+    					<?php
+							$now = date("Y");
+							$sekarang = 2000;
+							for($i=$sekarang; $i<=$now; $i++) {
+							echo "<option value='$i'>$i</option>";	
+							}
+						?>
+			  		</select>
+				  	</td>
+				</tr>
+				<tr>
+					<td>Lampiran SK Jabatan</td>
+					<td><input name="foto_sk_jabatan" id="fupload" type='file' required/></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div style="margin-bottom:2%; border-bottom: 1px solid #ccc;padding-bottom: 2%;"></div>
+					</td>
 				</tr>
 				<tr>
 					<td>Tanggal Masuk</td>
@@ -202,32 +289,6 @@
 							?>
 				  		</select>
 				  	</td>
-				</tr>
-				<tr>
-					<td>Golongan</td>
-					<td><select name='gol' id="gol" class="formcontrol-select" required>
-						<option value='' selected >Pilih Golongan</option>";
-						<?php
-							$bagian=mysql_query("select * from gol_pangkat");
-							while($data=mysql_fetch_array($bagian)){
-				  			echo "<option value='$data[id_golongan]'>$data[nama_golongan]</option>";
-							}
-						?>
-						</select>
-				  	</td>
-				</tr>
-				<tr>
-					<td>Jabatan</td>
-					<td><select name="jbtn" id="jbtn" class="formcontrol-select" required>	
-						<option value='' selected >Pilih Jabatan</option>";
-						<?php
-							$jabatan=mysql_query("select * from jabatan");
-							while($data=mysql_fetch_array($jabatan)){
-							echo "<option value='$data[id_jab]'>$data[n_jab]</option>";
-							}
-						?>
-						</select>
-					</td>
 				</tr>
 				<tr>
 					<td>Foto</td>

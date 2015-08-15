@@ -293,7 +293,7 @@ switch($_GET[act]){
 			</tr>
 			<tr>
 				<td>Foto</td>
-				<td><img src='image_peg/small_$t[foto]' /></td>
+				<td><img src='image_peg/$t[foto]' /></td>
 			</tr>
 			<tr>
 				<td>Ganti Foto</td>
@@ -319,7 +319,7 @@ switch($_GET[act]){
 			if($t[foto]==""){
 				echo "<img src='image_peg/no.jpg' width='200' height='240' />";
 			} else {
-				echo "<img src='image_peg/small_$t[foto]' width='200' height='240' />";
+				echo "<img src='image_peg/$t[foto]' width='200' height='240' />";
 			}
 echo "  </div>
 		<div class='box-detailpegawai'>
