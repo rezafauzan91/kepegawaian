@@ -27,15 +27,13 @@
 	var kecepatan	=250;
 	var segarkan	=null;
 
-
 	function bergerak() { 
-
 		document.title  =txt;
 			txt=txt.substring(1,txt.length)+txt.charAt(0);
 			segarkan=setTimeout("bergerak()",kecepatan);
 	}
-
 	bergerak();
+	
 	$(document).ready(function(){
 		$('#tgl_lahir, #tgl_sk, #tgl_sk_jab, #tgl_msk').Zebra_DatePicker({
 			view: 'years'
