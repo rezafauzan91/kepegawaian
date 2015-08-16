@@ -27,15 +27,18 @@
 <body class="body">
 <div id="wrapper">
 <div class="header-laplap">
-		<div class="wrap-headerlap">
-			<div class="ruler-postion">
-				<h2 class="heading-lap">PEMERINTAH KABUPATEN KULON PROGO <br> KECAMATAN SENTOLO</h2>
-				<p class="heading-adress">Jln Jogja Km 20 Salamrejo telp 027456645 Kode Pos 55664 Yogyakarta</p>
-			<div class="img-box">		
-				<img class="resize-img" src="images/images_login/logo-lap.png">
-			</div>
-			</div>
-			<hr class="linear-grid"></hr>
+
+	<div class="wrap-headerlap">
+		<div class="ruler-postion">
+			<h2 class="heading-lap">PEMERINTAH KABUPATEN KULON PROGO <br> KECAMATAN SENTOLO</h2>
+			<p class="heading-adress">Jln Jogja Km 20 Salamrejo telp 027456645 Kode Pos 55664 Yogyakarta</p>
+		<div class="img-box">		
+			<img class="resize-img" src="images/images_login/logo-lap.png">
+		</div>
+		</div>
+		<hr class="linear-grid"></hr>
+	</div>
+	
 <?php
 	include "config/koneksi.php";
 	include "config/fungsi_indotgl.php";

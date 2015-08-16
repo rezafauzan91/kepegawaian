@@ -546,6 +546,9 @@ hr{
 	    color: hsl(0, 0%, 0%);
 	    text-align: justify;
         margin: 0px 0px 18px 0px;
+} 
+.deskrip-li ,.dekrip_a{
+		list-style: none;
 }
 .inner-deskripsi{
 		font-family: Arial,sans-serif;

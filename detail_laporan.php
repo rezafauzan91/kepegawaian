@@ -4,9 +4,31 @@
 <!DOCTYPE html>
 <html lang="eng">
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>LAPORAN DATA PEGAWAI</title>
-	<link rel="stylesheet" href="css/print.css" type="text/css"  />
+<title>Laporan data pegawai</title>
+<!-- css -->
+<link rel="stylesheet" href="css/bootstrap-3.3.5-dist/css/bootstrap.css" type="text/css"/>
+<link rel="stylesheet" href="css/print.css" type="text/css"  />
+<!-- css -->
+
+<script language="JavaScript">
+
+	var txt 		=" Laporan data pegawai Kecamatan Sentolo";
+	var kecepatan	=250;
+	var segarkan	=null;
+
+
+	function bergerak() { 
+
+		document.title  =txt;
+			txt=txt.substring(1,txt.length)+txt.charAt(0);
+			segarkan=setTimeout("bergerak()",kecepatan);
+	}
+
+	bergerak();
+
+</script>
 </head>
 	<style>
 		@media print {
@@ -15,20 +37,33 @@
 		}
 	}
 	</style>
+
 <body class="body">
 	<div id="wrapper2">
-		<?php
-			include "config/koneksi.php";
+	<div class="header-laplap">
+		<div class="wrap-headerlap">
+			<div class="ruler-postion">
+				<h2 class="heading-lap">PEMERINTAH KABUPATEN KULON PROGO <br> KECAMATAN SENTOLO</h2>
+				<p class="heading-adress">Jln Jogja Km 20 Salamrejo telp 027456645 Kode Pos 55664 Yogyakarta</p>
+			<div class="img-box">		
+				<img class="resize-img" src="images/images_login/logo-lap.png">
+			</div>
+			</div>
+			<hr class="linear-grid"></hr>
 
-			include "config/fungsi_indotgl.php";
-			include "config/class_paging.php";
-			include "config/kode_auto.php";
-			include "config/fungsi_combobox.php";
-			include "config/fungsi_nip.php";
+<?php
+	include "config/koneksi.php";
 
-		$ambil=mysql_query("select * from pegawai where nip='$_GET[id]'");
-		$data=mysql_fetch_array($ambil);
-	?>
+	include "config/fungsi_indotgl.php";
+	include "config/class_paging.php";
+	include "config/kode_auto.php";
+	include "config/fungsi_combobox.php";
+	include "config/fungsi_nip.php";
+
+$ambil=mysql_query("select * from pegawai where nip='$_GET[id]'");
+$data=mysql_fetch_array($ambil);
+?>
+
 <h2 class='head'>Data Pegawai</h2>
 	<div class='foto'>
 		<?php
@@ -161,9 +196,9 @@
 	</div>
 		<div style='clear:both'></div>";	
 ?>
-	<div style="text-align:center;padding:20px;">
-			<input class="noPrint" type="button" value="Cetak Halaman" onclick="window.print()">
-				<?php echo "<input type=button value=Batal onclick=self.history.back()>";?>
+	<div style="text-align:left; padding:20px; padding-bottom:20px;">
+			<input class="noPrint btn btn-primary " type="submit" value="Cetak Halaman" onclick="window.print()">
+				<?php echo "<input class='btn btn-danger' type=button value=Batal onclick=self.history.back()>";?>
 	</div>
 </div>
 </body>
