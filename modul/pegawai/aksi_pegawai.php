@@ -55,17 +55,17 @@ if($module=='pegawai' AND $act=='input' ){
 	$nip 			=$_POST['nip'];
 	$nama 			=$_POST['nama'];
 	$tmpt_lahir 	=$_POST['tmpt_lahir'];
-	$tgl_lahir  	=$_POST['thn']."-".$_POST['bln']."-".$_POST['tgl'];								 
+	$tgl_lahir  	=$_POST['tgl_lahir'];								 
 	$jenis_kelamin  =$_POST['jns_kel'];								
 	$alamat 		=$_POST['almt'];								 
-	$tgl_masuk 		=$_POST['thn_msk']."-".$_POST['bln_msk']."-".$_POST['tgl_msk'];
+	$tgl_masuk 		=$_POST['tgl_msk'];
 
 	$no_sk			=$_POST['no_sk'];
-	$tgl_sk 		=$_POST['thn_sk']."-".$_POST['bln_sk']."-".$_POST['tgl_sk'];	
+	$tgl_sk 		=$_POST['tgl_sk'];	
 	$id_gol 		=$_POST['gol'];							 
 	
 	$no_sk_jab		=$_POST['no_sk_jab'];
-	$tgl_sk_jab		=$_POST['thn_sk_jab']."-".$_POST['bln_sk_jab']."-".$_POST['tgl_sk_jab'];	
+	$tgl_sk_jab		=$_POST['tgl_sk_jab'];	
 	$id_jab 		=$_POST['jbtn'];								
 	
 	// $foto 			=$nama_file_unik;		

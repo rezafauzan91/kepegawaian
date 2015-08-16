@@ -680,10 +680,7 @@ hr{
 		width: 100%;
 }
 
-
 /* Registrasi Config */
-
-
 .image-resizator{
 		display: inline-block;
 }
@@ -692,4 +689,9 @@ hr{
 		height: auto
 }
 
+input.error, select.error {
+	border: 1px solid #f90000;
+}
+.errorplace, .errorplace_tgllahir, .errorplace_tglskgol, .errorplace_tglskjab, .errorplace_tglmasuk {
+	color: #f90000;
 }
