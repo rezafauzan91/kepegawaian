@@ -38,7 +38,7 @@
 		$('#tgl_lahir, #tgl_sk, #tgl_sk_jab, #tgl_msk').Zebra_DatePicker({
 			view: 'years'
 		});
-		$('.sign-up').click(function(){
+		$('#simpan').click(function(){
 			var tgl_lahir = $('#tgl_lahir').val();
 			var tgl_msk = $('#tgl_msk').val();
 			var tgl_sk = $('#tgl_sk').val();
@@ -290,9 +290,13 @@
 					</td>
 				</tr>
 				<tr>
-					<td></td>
-					<td><input type="submit" value="Simpan" id="simpan" name="simpan" class="btn btn-primary">
-						<input type="submit" value="Batal" class="btn btn-danger" onclick=self.history.back()>
+					<td colspan="3"><div class="alert alert-warning" role="alert">Sebelum data di simpan dimohon di cek kembali datanya! Terima kasih</div></td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td><input type="submit" value="Simpan" id="simpan" name="simpan" class="btn btn-primary simpan">
+						<a class="btn btn-danger" href="javascript:;" onclick="self.history.back();">Batal</a>
 				</tr>
 			</table>
 			<div style="padding-bottom:50px;"></div>
