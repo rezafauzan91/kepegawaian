@@ -121,14 +121,14 @@
 <body>
 <div id="container-pegawai">
 	<div id="box-wrapper">
-	<div clas="">
-		<img src="image/">
+	<div class="image-resizator">
+		<img src="images/images_login/Lambang Kabupaten Kulon Progo.png" class="imagess">
 
-	</div>
 		<div id="box-isi">
 			<h2 class="style-heading"> FORM REGISTRASI PEGAWAI</h2>
 			<p class="style-heading-min">-- kecamatan sentolo --</p>
 		</div>	
+	</div>
 	</div><hr>
 	
 	<?php 

@@ -22,9 +22,9 @@
 			<div class="sidebar-rightcontent">
 				<article class="deskrip-gelar">
 					<ul>
-						<li><a href="">Organisasi</a></li>
-						<li><a href="">Visi Misi</a></li>
-						<li><a href="">Sejarah</a></li>
+						<li class="deskrip-li"><a href="" class="dekrip_a">Organisasi</a></li>
+						<li class="deskrip-li"><a href="" class="dekrip_a">Visi Misi</a></li>
+						<li class="deskrip-li"><a href="" class="dekrip_a">Sejarah</a></li>
 					</ul>
 				</article>
 			</div>
