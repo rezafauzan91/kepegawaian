@@ -12,8 +12,16 @@
 <html lang="eng">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <head>
+<title></title>
+<!--css-->
+	<link rel="stylesheet" href="css/style.css" type="text/css"/>
+	<link rel="stylesheet" href="css/default.css" type="text/css">
+	<script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+	<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/zebra_datepicker.js"></script>
+<!--css-->
 <!-- FUNGSI TITLE BERGERAK -->
-<script language="JavaScript">
+<script type="text/javascript">
 
 	var txt 		=" Sistem Informasi Kepegawaian Kecamatan Sentolo";
 	var kecepatan	=250;
@@ -28,12 +36,89 @@
 	}
 
 	bergerak();
+	$(document).ready(function(){
+		$('#tgl_lahir, #tgl_sk, #tgl_sk_jab, #tgl_msk').Zebra_DatePicker({
+			view: 'years'
+		});
+		$('.sign-up').click(function(){
+			var tgl_lahir = $('#tgl_lahir').val();
+			var tgl_msk = $('#tgl_msk').val();
+			var tgl_sk = $('#tgl_sk').val();
+			var tgl_sk_jab = $('#tgl_sk_jab').val();
+			if(tgl_lahir == '') {
+				$('.errorplace_tgllahir').show();
+				$('#tgl_lahir').addClass('error');
+			}else{
+				$('.errorplace_tgllahir').hide();
+				$('#tgl_lahir').removeClass('error');
+			}
 
+			if(tgl_msk == '') {
+				$('.errorplace_tglmasuk').show();
+				$('#tgl_msk').addClass('error');
+			}else{
+				$('.errorplace_tglmasuk').hide();
+				$('#tgl_msk').removeClass('error');
+			}
+
+			if(tgl_sk == '') {
+				$('.errorplace_tglskgol').show();
+				$('#tgl_sk').addClass('error');
+			}else{
+				$('.errorplace_tglskgol').hide();
+				$('#tgl_sk').removeClass('error');
+			}
+
+			if(tgl_sk_jab == '') {
+				$('.errorplace_tglskjab').show();
+				$('#tgl_sk_jab').addClass('error');
+			}else{
+				$('.errorplace_tglskjab').hide();
+				$('#tgl_sk_jab').removeClass('error');
+			}
+		});
+		$("#sign-up").validate({ 
+		  errorPlacement: function (error, element) {
+    		error.appendTo(element.parents("tr").find("div.errorplace"));
+		  },
+		  ignore: "input[type='text']:hidden",
+		onsubmit: true,
+		onkeyup: true,
+		onclick: true,
+          rules: {
+              nip:{
+              		required:true,
+              		number:true,
+              		maxlength:18,
+              		minlength:18
+              },
+          },
+          messages: {
+          	  nip: {
+          	  		required: "Kolom nip wajib di isi!",
+          	  		number: "Kolom nip harus angka!",
+          	  		maxlength: "Kolom nip max 18 karakter!",
+          	  		minlength: "Kolom nip min 18 karakter!",
+          	  },
+              passlogin: "Kolom password tidak boleh kosong!",
+              nama: "Kolom nama lengkap tidak boleh kosong!",
+              jns_kel : "Kolom jenis kelamin tidak boleh kosong!",
+              tmpt_lahir: "Kolom tempat lahir tidak boleh kosong!",
+              almt: "Kolom alamat tidak boleh kosong!",
+              no_sk : "Kolom no SK golongan tidak boleh kosong!",
+              gol: "Kolom pilih golongan harus dipilih!",
+              foto_sk_golongan : "Kolom foto SK golongan harus di isi!",
+              no_sk_jab : "Kolom no SK jabatan tidak boleh kosong!",
+              jbtn : "Kolom pilih jabatan harus dipilih! ",
+              foto_sk_jabatan : "Kolom foto SK jabatan harus di isi!",
+              fupload : "Kolom foto identitas diri harus di isi!"
+          }
+      });
+      $.validator.addMethod('selectcheck', function (value) {
+        return (value != '');
+        });
+	});
 </script>
-<title></title>
-<!--css-->
-	<link rel="stylesheet" href="css/style.css" type="text/css"/>
-<!--css-->
 </head>
 <body>
 <div id="container-pegawai">
@@ -50,76 +135,59 @@
 	
 	<?php 
 	$aksi="modul/pegawai/aksi_pegawai.php";
-	echo "<form action='$aksi?module=pegawai&act=input' method='post' enctype='multipart/form-data' class='f-r'>";
+	echo "<form action='$aksi?module=pegawai&act=input' id='sign-up' class='sign-up' method='post' enctype='multipart/form-data' class='f-r'>";
 
 	?>
 		<div id="box-isireg">
 			<table class='tabelform tabpad'>
 				<tr>
 					<td width="150">Nip</td>
-					<td><input name="nip" id="nip" class="form-controltxt" type="text" required=""></td>
+					<td>
+						<input name="nip" id="nip" class="form-controltxt" type="text" required>
+						<div class="errorplace"></div>
+					</td>
 				</tr>
 				<tr>
 					<td>Password Login</td>
-					<td><input name="passlogin" id="passlogin" class="form-controltxt" type="password" required=""></td>
+					<td>
+						<input name="passlogin" id="passlogin" class="form-controltxt" type="password" required>
+						<div class="errorplace"></div>
+					</td>
 				</tr>
 				<tr>
 					<td>Nama Pegawai</td>
-					<td><input name="nama" id="nama" class="form-controltxt" type="text" required=""></td>
+					<td>
+						<input name="nama" id="nama" class="form-controltxt" type="text" required>
+						<div class="errorplace"></div>
+					</td>
 				</tr>
 				<tr>
 					<td>Tempat Lahir</td>
-					<td><input name="tmpt_lahir" class="form-controltxt" type="text" required=""></td>
+					<td>
+						<input name="tmpt_lahir" class="form-controltxt" type="text" required>
+						<div class="errorplace"></div>
+					</td>
 				</tr>
 				<tr>
 					<td>Tanggal Lahir</td>
-					<td><select name="tgl" id="tgl" class="formcontrol-select" required>
-                			<option value="none" selected="selected" class="formcontrol-select">Tgl*</option>
-                				<?php
-									for ($i=1; $i<=31; $i++) {
-									$tg = ($i<10) ? "0$i" : $i;
-									$select = ($tg==$tgl)? "selected" : "";
-									echo "<option value='$tg' $select>$tg</option>";	
-									}
-								?>
-						</select>
-						<select name="bln" id="bln" class="formcontrol-select" required>
-				            <option value='none' selected='selected'>Bulan*</option>
-							<option value='1'>Januari</option>
-							<option value='2'>Februari</option>
-							<option value='3'>Maret</option>
-							<option value='4'>April</option>
-							<option value='5'>Mei</option>
-							<option value='6'>Juni</option>
-							<option value='7'>Juli</option>
-							<option value='8'>Agustus</option>
-							<option value='9'>September</option>
-							<option value='10'>Oktober</option>
-							<option value='11'>November</option>
-							<option value='12'>Desember</option>
-						</select>
-						<select name="thn" id="thn" class="formcontrol-select" required>
-            				<option value="none" selected="selected">Tahun*</option>
-								<?php
-									$now = date('Y')-18;
-									for ($i=1950; $i<=$now; $i++) {
-									$tg = ($i<10) ? "0$i" : $i;
-									$select = ($tg==$tgl)? "selected" : "";
-									echo "<option value='$tg' $select>$tg</option>";	
-									}
-								?>
-						</select>
+					<td>
+						<input name="tgl_lahir" id="tgl_lahir" class="form-controltxt" type="text">
+						<div class="errorplace_tgllahir" style="display:none;">Kolom tgl lahir tidak boleh kosong!</div>
 					</td>
 				</tr>
 				<tr>
 					<td>Jenis Kelamin</td>
-					<td><input name="jns_kel" id="jns_kel" type="radio" value="L" />Pria 
+					<td><input name="jns_kel" id="jns_kel" type="radio" value="L" required />Pria 
 						<input name="jns_kel" id="jns_kel" type="radio" value="P" />Wanita
+						<div class="errorplace"></div>
 					</td>
 				</tr>
 				<tr>
 					<td>Alamat</td>
-					<td><textarea name="almt" id="almt" cols="35" rows="5" class="form-controltextarea" required></textarea></td>
+					<td>
+						<textarea name="almt" id="almt" cols="35" rows="5" class="form-controltextarea" required></textarea>
+						<div class="errorplace"></div>
+					</td>
 				</tr>
 				<tr>
 					<td>Golongan</td>
@@ -132,54 +200,29 @@
 							}
 						?>
 						</select>
+						<div class="errorplace"></div>
 				  	</td>
 				</tr>
 				<tr>
 					<td>No SK Golongan</td>
-					<td><input name="no_sk" class="form-controltxt" id="nama" type="text" required=""></td>
+					<td>
+						<input name="no_sk" class="form-controltxt" id="no_sk" type="text" required>
+						<div class="errorplace"></div>
+					</td>
 				</tr>
 				<tr>
 					<td>Tanggal SK Golongan</td>
-					<td><select name="tgl_sk" id="tgl_msk" class="formcontrol-select" required>
-            			<option value='none' selected='selected'>Tgl*</option>
-            				<?php
-								for ($i=1; $i<=31; $i++) {
-								$tg = ($i<10) ? "0$i" : $i;
-								$select = ($tg==$tgl)? "selected" : "";
-								echo "<option value='$tg' $select>$tg</option>";	
-								}
-							?>
-					</select>
-					<select name="bln_sk" id="bln_msk" class="formcontrol-select" required>
-		            	<option value='none' selected='selected'>Bulan*</option>
-						<option value='1'>Januari</option>
-						<option value='2'>Februari</option>
-						<option value='3'>Maret</option>
-						<option value='4'>April</option>
-						<option value='5'>Mei</option>
-						<option value='6'>Juni</option>
-						<option value='7'>Juli</option>
-						<option value='8'>Agustus</option>
-						<option value='9'>September</option>
-						<option value='10'>Oktober</option>
-						<option value='11'>November</option>
-						<option value='12'>Desember</option>
-					</select>
-					<select name='thn_sk' id="tgl_msk" class="formcontrol-select" required>
-    					<option value='none' selected='selected'>Tahun*</option>";
-    					<?php
-							$now = date("Y");
-							$sekarang = 2000;
-							for($i=$sekarang; $i<=$now; $i++) {
-							echo "<option value='$i'>$i</option>";	
-							}
-						?>
-			  		</select>
+					<td>
+						<input name="tgl_sk" id="tgl_sk" class="form-controltxt" type="text">
+						<div class="errorplace_tglskgol" style="display:none;">Tanggal SK golongan tidak boleh kosong!</div>
 				  	</td>
 				</tr>
 				<tr>
 					<td>Lampiran SK Golongan</td>
-					<td><input name="foto_sk_golongan" id="fupload" type='file' required/></td>
+					<td>
+						<input name="foto_sk_golongan" id="foto_sk_golongan" type='file' required/>
+						<div class="errorplace"></div>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -197,54 +240,29 @@
 							}
 						?>
 						</select>
+						<div class="errorplace"></div>
 					</td>
 				</tr>
 				<tr>
 					<td>No SK Jabatan</td>
-					<td><input name="no_sk_jab" class="form-controltxt" id="nama" type="text" required=""></td>
+					<td>
+						<input name="no_sk_jab" class="form-controltxt" id="no_sk_jab" type="text" required>
+						<div class="errorplace"></div>
+					</td>
 				</tr>
 				<tr>
 					<td>Tanggal SK Jabatan</td>
-					<td><select name="tgl_sk_jab" id="tgl_msk" class="formcontrol-select" required>
-            			<option value='none' selected='selected'>Tgl*</option>
-            				<?php
-								for ($i=1; $i<=31; $i++) {
-								$tg = ($i<10) ? "0$i" : $i;
-								$select = ($tg==$tgl)? "selected" : "";
-								echo "<option value='$tg' $select>$tg</option>";	
-								}
-							?>
-					</select>
-					<select name="bln_sk_jab" id="bln_msk" class="formcontrol-select" required>
-		            	<option value='none' selected='selected'>Bulan*</option>
-						<option value='1'>Januari</option>
-						<option value='2'>Februari</option>
-						<option value='3'>Maret</option>
-						<option value='4'>April</option>
-						<option value='5'>Mei</option>
-						<option value='6'>Juni</option>
-						<option value='7'>Juli</option>
-						<option value='8'>Agustus</option>
-						<option value='9'>September</option>
-						<option value='10'>Oktober</option>
-						<option value='11'>November</option>
-						<option value='12'>Desember</option>
-					</select>
-					<select name='thn_sk_jab' id="tgl_msk" class="formcontrol-select" required>
-    					<option value='none' selected='selected'>Tahun*</option>";
-    					<?php
-							$now = date("Y");
-							$sekarang = 2000;
-							for($i=$sekarang; $i<=$now; $i++) {
-							echo "<option value='$i'>$i</option>";	
-							}
-						?>
-			  		</select>
+					<td>
+						<input name="tgl_sk_jab" id="tgl_sk_jab" class="form-controltxt" type="text">
+						<div class="errorplace_tglskjab" style="display:none;">Tanggal SK jabatan tidak boleh kosong!</div>
 				  	</td>
 				</tr>
 				<tr>
 					<td>Lampiran SK Jabatan</td>
-					<td><input name="foto_sk_jabatan" id="fupload" type='file' required/></td>
+					<td>
+						<input name="foto_sk_jabatan" id="foto_sk_jabatan" type='file' required/>
+						<div class="errorplace"></div>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -253,46 +271,17 @@
 				</tr>
 				<tr>
 					<td>Tanggal Masuk</td>
-					<td><select name="tgl_msk" id="tgl_msk" class="formcontrol-select" required>
-            			<option value='none' selected='selected'>Tgl*</option>
-            				<?php
-								for ($i=1; $i<=31; $i++) {
-								$tg = ($i<10) ? "0$i" : $i;
-								$select = ($tg==$tgl)? "selected" : "";
-								echo "<option value='$tg' $select>$tg</option>";	
-								}
-							?>
-					</select>
-						<select name="bln_msk" id="bln_msk" class="formcontrol-select" required>
-			            	<option value='none' selected='selected'>Bulan*</option>
-							<option value='1'>Januari</option>
-							<option value='2'>Februari</option>
-							<option value='3'>Maret</option>
-							<option value='4'>April</option>
-							<option value='5'>Mei</option>
-							<option value='6'>Juni</option>
-							<option value='7'>Juli</option>
-							<option value='8'>Agustus</option>
-							<option value='9'>September</option>
-							<option value='10'>Oktober</option>
-							<option value='11'>November</option>
-							<option value='12'>Desember</option>
-						</select>
-						<select name='thn_msk' id="tgl_msk" class="formcontrol-select" required>
-        					<option value='none' selected='selected'>Tahun*</option>";
-        					<?php
-								$now = date("Y");
-								$sekarang = 2000;
-								for($i=$sekarang; $i<=$now; $i++) {
-								echo "<option value='$i'>$i</option>";	
-								}
-							?>
-				  		</select>
+					<td>
+						<input name="tgl_msk" id="tgl_msk" class="form-controltxt" required type="text">
+						<div class="errorplace_tglmasuk" style="display:none;">Tanggal masuk tidak boleh kosong!</div>
 				  	</td>
 				</tr>
 				<tr>
 					<td>Foto</td>
-					<td><input name="fupload" id="fupload" type='file' required/></td>
+					<td>
+						<input name="fupload" id="fupload" type='file' required/>
+						<div class="errorplace"></div>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="3">

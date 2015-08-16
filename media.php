@@ -32,6 +32,7 @@
 	<link rel="stylesheet" href="css/lightbox.css" type="text/css">
 <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
 <script src="js/superfish.js" type="text/javascript"></script>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="js/hoverIntent.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/zebra_datepicker.js"></script>
 	<script type="text/javascript">
