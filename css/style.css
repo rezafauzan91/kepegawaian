@@ -689,10 +689,11 @@ hr{
 		height: auto
 }
 
-input.error, select.error {
+input.error, select.error, textarea.error {
 	border: 1px solid #f90000;
 }
-.errorplace, .errorplace_tgllahir, .errorplace_tglskgol, .errorplace_tglskjab, .errorplace_tglmasuk {
+.errorplace, .errorplace_tgllahir, .errorplace_tglskgol, 
+.errorplace_tglskjab, .errorplace_tglmasuk,.errorplace_tglsk, .errorplace_tgltmt {
 	color: #f90000;
 }
 .alert-warning {

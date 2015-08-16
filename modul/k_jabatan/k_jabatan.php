@@ -1,14 +1,52 @@
 <script type="text/javascript">
-  $(document).ready(function(){
+$(document).ready(function(){
    	$('.tgl-sk').Zebra_DatePicker({
-		  direction: true,
-		  pair: $('.tmt-sk')
-		});
+	  	direction: true,
+		pair: $('.tmt-sk')
+	});
 
-		$('.tmt-sk').Zebra_DatePicker({
-		  direction: 1
-		});
-  });
+	$('.tmt-sk').Zebra_DatePicker({
+		direction: 1
+	});
+	$('.ubahjb').click(function(){
+		var tgl_tmt = $('.tmt-sk').val();
+		var tgl_sk = $('.tgl-sk').val();
+
+		if(tgl_tmt == '') {
+			$('.errorplace_tgltmt').show();
+			$('.tmt-sk').addClass('error');
+		}else{
+			$('.errorplace_tgltmt').hide();
+			$('.tmt-sk').removeClass('error');
+		}
+
+		if(tgl_sk == '') {
+			$('.errorplace_tglsk').show();
+			$('.tgl-sk').addClass('error');
+		}else{
+			$('.errorplace_tglsk').hide();
+			$('.tgl-sk').removeClass('error');
+		}
+	});
+	$("#ubahjb").validate({ 
+	  	errorPlacement: function (error, element) {
+    		error.appendTo(element.parents("tr").find("div.errorplace"));
+	  	},
+		ignore: "input[type='text']:hidden",
+		onsubmit: true,
+		onkeyup: true,
+		onclick: true,
+        messages: {
+            ket: "Kolom Keterangan tidak boleh kosong!",
+            sk : "Kolom no SK jabatan tidak boleh kosong!",
+            jbtn : "Kolom pilih jabatan harus dipilih! ",
+            foto_sk : "Kolom foto SK jabatan harus di isi!",
+        }
+    });
+    $.validator.addMethod('selectcheck', function (value) {
+	   return (value != '');
+    });
+});
 </script>
 
 <?php
@@ -108,7 +146,7 @@ switch($_GET[act]){
 			<p class='headings'></p>";
 	  	while($datanya=mysql_fetch_array($_tampil)){
 
-	echo "<form action='$aksi?module=kjb&act=ubahjb' method='post' enctype='multipart/form-data'>
+	echo "<form action='$aksi?module=kjb&act=ubahjb' id='ubahjb' method='post' enctype='multipart/form-data'>
 		<table class='tabelform tabpad'>
 			<tr>
 				<td width='150'>Jabatan Sekarang</td>
@@ -120,7 +158,7 @@ switch($_GET[act]){
 			<tr>
 				<td>Ubah Jabatan</td>
 				<td>";?>
-					<select name="jbtn" id="jbtn" class='formcontrol-select'>
+					<select name="jbtn" id="jbtn" class='formcontrol-select' required>
 						<option value='' selected >Pilih Jabatan</option>";
 						<?php
 
@@ -130,38 +168,50 @@ switch($_GET[act]){
 							}
 						?>
 					</select>
-
+					<div class="errorplace"></div>
 				<?php echo "</td>
 			</tr>
 			<tr>
 				<td>No SK</td>
 				<td>
-					<input class='form-controltxt' name='sk' type='text' value=''>
+					<input class='form-controltxt' name='sk' type='text' value='' required>
+					<div class='errorplace'></div>
 				</td>
 			</tr>
 			<tr>
 				<td>Tgl SK</td>
 				<td>
 					<input class='form-controltxt tgl-sk' name='tgl_sk' type='text' value='' style='cursor: pointer;'>
+					<div class='errorplace_tglsk' style='display:none;'>Kolom tgl SK tidak boleh kosong!</div>
 				</td>
 			</tr>
 			<tr>
 				<td>Tmt SK</td>
 				<td>
 					<input class='form-controltxt tmt-sk' name='tmt_sk' type='text' value='' style='cursor: pointer;'>
+					<div class='errorplace_tgltmt' style='display:none;'>Kolom tgl TMT SK tidak boleh kosong!</div>
 				</td>
 			</tr>
 			<tr>
 				<td>Keterangan</td>
-				<td><textarea name='ket' class='form-controltextarea'></textarea></td>
+				<td>
+					<textarea name='ket' class='form-controltextarea' required></textarea>
+					<div class='errorplace'></div>
+				</td>
 			</tr>
 			<tr>
 				<td>Lampiran SK</td>
-				<td><input type='file' name='foto_sk' class=''/></td>
+				<td>
+					<input type='file' name='foto_sk' class='' required/>
+					<div class='errorplace'></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan='2'><div class='alert alert-warning' role='alert'>Sebelum data di simpan dimohon di cek kembali datanya! Terima kasih</div></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type=submit value=Simpan class='btn btn-primary'>
+				<td><input type=submit value=Simpan class='btn btn-primary ubahjb'>
 					<input type=button value=Batal class='btn btn-danger' onclick=self.history.back()></td>
 			</tr>
 		</table>

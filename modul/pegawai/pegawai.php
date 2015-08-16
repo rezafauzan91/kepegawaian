@@ -364,9 +364,9 @@ echo "  </div>
 			<tr>
 				<td>Golongan</td>
 				<td>";
-					$gol=mysql_query("select * from golongan where id_gol='$t[id_gol]'");
+					$gol=mysql_query("select * from gol_pangkat where id_golongan='$t[id_gol]'");
 					$b=mysql_fetch_array($gol);
-					echo "$b[nm_gol]";	
+					echo "$b[nama_golongan]";	
 		echo "  </td>
 			</tr>
 			<tr>
