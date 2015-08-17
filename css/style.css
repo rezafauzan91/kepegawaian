@@ -699,6 +699,11 @@ input.error, select.error, textarea.error {
 .errorplace_tglskjab, .errorplace_tglmasuk,.errorplace_tglsk, .errorplace_tgltmt {
 	color: #f90000;
 }
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
 .alert-warning {
     color: #8a6d3b;
     background-color: #fcf8e3;
@@ -709,4 +714,13 @@ input.error, select.error, textarea.error {
     margin-bottom: 20px;
     border: 1px solid transparent;
     border-radius: 4px;
+}
+.disabled {
+	cursor: not-allowed;
+    background-color: #eee;
+    opacity: 1;
+}
+.readonly {
+    background-color: #eee;
+    opacity: 1;
 }

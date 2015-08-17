@@ -202,6 +202,11 @@
 				  	</td>
 				</tr>
 				<tr>
+					<td colspan="2">
+						<div style="margin-bottom:2%; border-bottom: 1px solid #ccc;padding-bottom: 2%;"></div>
+					</td>
+				</tr>
+				<tr>
 					<td>No SK Golongan</td>
 					<td>
 						<input name="no_sk" class="form-controltxt" id="no_sk" type="text" required>
@@ -220,6 +225,11 @@
 					<td>
 						<input name="foto_sk_golongan" id="foto_sk_golongan" type='file' required/>
 						<div class="errorplace"></div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="alert alert-danger" role="alert">Golongan yang di masukkan adalah golongan saat ini. Jadi harap dimasukkan dgn benar, karena tdk bs dirubah setelah di input</div>
 					</td>
 				</tr>
 				<tr>
@@ -260,6 +270,11 @@
 					<td>
 						<input name="foto_sk_jabatan" id="foto_sk_jabatan" type='file' required/>
 						<div class="errorplace"></div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="alert alert-danger" role="alert">Jabatan yang di masukkan adalah jabatan saat ini. Jadi harap dimasukkan dgn benar, karena tdk bs dirubah setelah di input</div>
 					</td>
 				</tr>
 				<tr>
