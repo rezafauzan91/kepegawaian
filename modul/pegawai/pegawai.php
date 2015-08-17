@@ -137,7 +137,7 @@ switch($_GET[act]){
 			</tr>
 			<tr>
 				<td>Golongan</td>
-				<td><select name='golongan'>
+				<td><select name='golongan' readonly>
 					<option value='' selected >Pilih Golongan</option>";
 						$jab=mysql_query("select * from golongan");
 						while($j=mysql_fetch_array($jab)){
@@ -149,7 +149,7 @@ switch($_GET[act]){
 			<tr>
 				<td>Jabatan</td>
 				<td>:</td>
-				<td><select name='jabatan'>	
+				<td><select name='jabatan' readonly>	
 					<option value='' selected >Pilih Jabatan</option>";
 						$jab=mysql_query("select * from jabatan");
 						while($j=mysql_fetch_array($jab)){
@@ -200,7 +200,7 @@ switch($_GET[act]){
 		<table class='tabelform tabpad'>
 			<tr>
 				<td>Nip</td>
-				<td><input name='nip' class='form-controltxt' type='text' value='$t[nip]' readonly></td>
+				<td><input name='nip' class='form-controltxt readonly' type='text' value='$t[nip]' readonly></td>
 			</tr>
 			<tr>
 				<td>Nama Pegawai</td>
@@ -263,7 +263,7 @@ switch($_GET[act]){
 			</tr>
 			<tr>
 				<td>Golongan</td>
-				<td><select name='golongan' class='formcontrol-select '>
+				<td><select name='golongan' class='formcontrol-select disabled' disabled>
 					<option value=''>Pilih Golongan</option>";
 						$jab=mysql_query("select * from gol_pangkat");
 						while($j=mysql_fetch_array($jab)){
@@ -278,7 +278,7 @@ switch($_GET[act]){
 			</tr>
 			<tr>
 				<td>Jabatan</td>
-				<td><select name='jabatan' class='formcontrol-select '>	
+				<td><select name='jabatan' class='formcontrol-select disabled' disabled>	
 					<option value='' >Pilih Jabatan</option>";
 						$jab=mysql_query("select * from jabatan");
 						while($j=mysql_fetch_array($jab)){
