@@ -14,9 +14,8 @@ if($module=='pegawai' AND $act=='hapus' ){
 }
 
 if($module=='pelatihan' AND $act=='input' ){
-	$tl="$_POST[thp]-$_POST[bp]-$_POST[tp]";
 	mysql_query("insert into pelatihan (tgl_pelatihan,topik_pelatihan,penyelenggara,keterangan) values 
-		('$tl','$_POST[topik]','$_POST[pl]','$_POST[ket]')");
+		('$_POST[tgl_pelatihan]','$_POST[topik]','$_POST[pl]','$_POST[ket]')");
 	header('location:../../media.php?module='.$module);
 }
 

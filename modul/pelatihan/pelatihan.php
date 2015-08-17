@@ -174,7 +174,6 @@ echo "
 			    <th class='style-table'>No</th>
 			    <th class='style-table'>NIP</th>
 			    <th class='style-table'>Nama Peserta</th>
-			    <th class='style-table'>Nilai Peserta</th>
  			</tr>
   		</thead>";
   		$no=1;
@@ -183,7 +182,6 @@ echo "
 	    			<td>$no</td>
 	    			<td>$dt[nip]</td>
 	    			<td>$dt[nama]</td>
-					<td>$dt[nilai]</td>
 	  			</tr>";
 	  	$no++;
 	  	}
@@ -207,15 +205,19 @@ echo "
 			<tr>
 				<td>Tanggal Pelatihan</td>
 				<td>";
-					$tg=explode("-",$ed['tgl_pelatihan']);
-					$tpt=$tg[0];
-					$tpb=$tg[1];
-					$tph=$tg[2];
-					$now =  date("Y");
-							$saiki = 2000;
-					combotgl(1, 31, tp, $tph);
-					combonamabln(1,12,bp,$tpb);
-					combothn(2000, $now, thp, $tpt);
+				?>
+				<input name="tgl_pelatihan" value="<?php echo $ed['tgl_pelatihan']; ?>" id="tgl_pelatihan" class="form-controltxt" type="text">
+				
+			<?php		
+					// $tg=explode("-",$ed['tgl_pelatihan']);
+					// $tpt=$tg[0];
+					// $tpb=$tg[1];
+					// $tph=$tg[2];
+					// $now =  date("Y");
+					// 		$saiki = 2000;
+					// combotgl(1, 31, tp, $tph);
+					// combonamabln(1,12,bp,$tpb);
+					// combothn(2000, $now, thp, $tpt);
 			echo "
 				</td>
 			</tr>
@@ -307,12 +309,12 @@ echo "
 		</table>";
 		echo "<div style='margin:20px 0px 0px 210px; font-family:IstokWebRegular;'>";
 
-				if($count > 0) {
-						echo "<span style='margin-right:10px;><a class='btn btn-primary' href=\"$aksi?module=pelatihan&act=batal&id=$dt[id_pelatihan]\" onClick=\"return confirm('Apakah Anda membatalkan pelatihan?')\">Batal</a></span>";
-				}else {
-						echo "<span style='margin-right:10px;'><a class='btn btn-primary' href=\"$aksi?module=pelatihan&act=ikuti&id=$dt[id_pelatihan]\" onClick=\"return confirm('Apakah Anda mengikuti pelatihan?')\">Ikuti</a></span>";
-				}
-				echo "<input type=button value=Batal class='btn btn-danger' onclick=self.history.back()>";
+		if($count > 0) { ?>
+			<span style='margin-right:10px;'><a class="btn btn-primary" href="<?php echo $aksi; ?>?module=pelatihan&act=batal&id=<?php echo $_GET[id]; ?>" onClick="return confirm('Apakah Anda membatalkan pelatihan?');">Batal</a></span>
+		<?php }else { ?>
+			<span style='margin-right:10px;'><a class="btn btn-primary" href="<?php echo $aksi; ?>?module=pelatihan&act=ikuti&id=<?php echo $_GET['id']; ?>" onClick="return confirm('Apakah Anda mengikuti pelatihan?');">Ikuti</a></span>
+		<?php }
+		echo "<input type=button value=Kembali class='btn btn-danger' onclick=self.history.back()>";
 
 		echo "</div>";
 
