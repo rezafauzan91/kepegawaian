@@ -125,7 +125,7 @@ elseif($module=='pegawai' AND $act=='edit' ){
 
   if (!empty($lokasi_file)){  
 		
-	$tll="$_POST[tl]-$_POST[btl]-$_POST[ttl]";
+	// $tll="$_POST[tl]-$_POST[btl]-$_POST[ttl]";
 	// $tm="$_POST[tt]-$_POST[bt]-$_POST[ht]";
 
 	$vdir_upload    = "../../image_peg/";
@@ -133,7 +133,7 @@ elseif($module=='pegawai' AND $act=='edit' ){
 
 	mysql_query("update pegawai set nama='$_POST[nama]',
 										 tmpt_lahir='$_POST[tls]',
-										 tgl_lahir='$tll',
+										 tgl_lahir='$_POST[tgl_lahir]',
 										 jenis_kelamin='$_POST[jk]',
 										 alamat='$_POST[almt]',
 										 tgl_masuk='$_POST[tm]',
@@ -148,10 +148,10 @@ elseif($module=='pegawai' AND $act=='edit' ){
 	$tm="$_POST[tt]-$_POST[bt]-$_POST[ht]";
 	mysql_query("update pegawai set nama='$_POST[nama]',
 										 tmpt_lahir='$_POST[tls]',
-										 tgl_lahir='$tll',
+										 tgl_lahir='$_POST[tgl_lahir]',
 										 jenis_kelamin='$_POST[jk]',
 										 alamat='$_POST[almt]',
-										 tgl_masuk='$tm',
+										 tgl_masuk='$_POST[tm]',
 										 id_gol='$_POST[golongan]',
 										 id_jab='$_POST[jabatan]'
 										 where nip='$_POST[nip]'");
