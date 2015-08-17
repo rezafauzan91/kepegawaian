@@ -696,7 +696,7 @@ input.error, select.error, textarea.error {
 	border: 1px solid #f90000;
 }
 .errorplace, .errorplace_tgllahir, .errorplace_tglskgol, 
-.errorplace_tglskjab, .errorplace_tglmasuk,.errorplace_tglsk, .errorplace_tgltmt {
+.errorplace_tglskjab, .errorplace_tglmasuk,.errorplace_tglsk, .errorplace_tgltmt, .errorplace_tgllatihan {
 	color: #f90000;
 }
 .alert-danger {

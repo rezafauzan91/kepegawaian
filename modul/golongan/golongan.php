@@ -1,3 +1,19 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#inputgol").validate({ 
+	  	errorPlacement: function (error, element) {
+    		error.appendTo(element.parents("tr").find("div.errorplace"));
+	  	},
+        messages: {
+            nama : "Kolom nama golongan harus di isi!",
+            pangkat : "Kolom nama pangkat harus di isi!"
+        }
+      });
+    $.validator.addMethod('selectcheck', function (value) {
+        return (value != '');
+    });
+});
+</script>
 <?php
 
 $aksi="modul/golongan/aksi_golongan.php";
@@ -40,21 +56,27 @@ switch($_GET[act]){
 	case "input":
 	echo "<h2 class='head'>Entry Data Golongan</h2>
 			<p class='headings'>Kecamatan sentolo</p>
-	<form action='$aksi?module=golongan&act=input' method='post'>
+	<form action='$aksi?module=golongan&act=input' method='post' id='inputgol'>
 	<div class='inner-contabox'>
 
 		<table class='tabelform'>
 			<tr>
 				<td width='150'>ID GOLONGAN</td>
-				<td><input class='form-controltxt' name='id' type='text' value=".kdauto(gol_pangkat,G)." readonly></td>
+				<td><input class='form-controltxt readonly' name='id' type='text' value=".kdauto(gol_pangkat,G)." readonly></td>
 			</tr>
 			<tr>
 				<td>NAMA GOLONGAN</td>
-				<td><input class='form-controltxt' name='nama' type='text' required></td>
+				<td>
+					<input class='form-controltxt' name='nama' type='text' required>
+					<div class='errorplace'></div>
+				</td>
 			</tr>
 			<tr>
 				<td>NAMA PANGKAT</td>
-				<td><input class='form-controltxt' name='pangkat' type='text' required></td>
+				<td>
+					<input class='form-controltxt' name='pangkat' type='text' required>
+					<div class='errorplace'></div>
+				</td>
 			</tr>
 		</table>
 		<div class='position-btngolongan'>
@@ -77,7 +99,7 @@ switch($_GET[act]){
 		<table class='tabelform'>
 			<tr>
 				<td width='150'>Id Golongan</td>
-				<td><input class='form-controltxt' name='id' type='text' value='$data[id_golongan]'></td>
+				<td><input class='form-controltxt readonly' name='id' type='text' value='$data[id_golongan]' readonly></td>
 			</tr>
 			<tr>
 				<td>Nama Golongan</td>

@@ -1,3 +1,48 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#tgl_lahir').Zebra_DatePicker({
+		view: 'years'
+	});
+	$("#tambahrp").validate({ 
+	  	errorPlacement: function (error, element) {
+    		error.appendTo(element.parents("tr").find("div.errorplace"));
+	  	},
+        messages: {
+            tahun : "Kolom tahun harus di isi!",
+            dp : "Kolom detail pendidikan harus di isi!"
+        }
+      });
+    $.validator.addMethod('selectcheck', function (value) {
+        return (value != '');
+    });
+
+    $("#tambahpk").validate({ 
+	  	errorPlacement: function (error, element) {
+    		error.appendTo(element.parents("tr").find("div.errorplace"));
+	  	},
+        messages: {
+            np : "Kolom nama pekerjaan harus di isi!",
+            dp : "Kolom detail pekerjaan harus di isi!"
+        }
+      });
+    $.validator.addMethod('selectcheck', function (value) {
+        return (value != '');
+    });
+
+    $("#editpwd").validate({ 
+	  	errorPlacement: function (error, element) {
+    		error.appendTo(element.parents("tr").find("div.errorplace"));
+	  	},
+        messages: {
+            pl : "Kolom password lama harus di isi!",
+            pb : "Kolom password baru harus di isi!"
+        }
+      });
+    $.validator.addMethod('selectcheck', function (value) {
+        return (value != '');
+    });
+});
+</script>
 <?php
 
 $aksi="modul/pegawai/aksi_pegawai.php";
@@ -213,13 +258,16 @@ switch($_GET[act]){
 			<tr>
 				<td>Tanggal Lahir</td>
 				<td>"; 
-					$tg=explode("-",$t['tgl_lahir']);
-					$tl=$tg[0];
-					$btl=$tg[1];
-					$htl=$tg[2];
-					combotgl(1, 31, ttl, $htl);
-					combonamabln(1,12,btl,$btl);
-					combothn(1965, 2000, tl, $tl);
+				?>
+			<input name="tgl_lahir" id="tgl_lahir" value="<?php echo $t['tgl_lahir']; ?>" class="form-controltxt" type="text">
+				 <?php	
+				// $tg=explode("-",$t['tgl_lahir']);
+				// 	$tl=$tg[0];
+				// 	$btl=$tg[1];
+				// 	$htl=$tg[2];
+				// 	combotgl(1, 31, ttl, $htl);
+				// 	combonamabln(1,12,btl,$btl);
+				// 	combothn(1965, 2000, tl, $tl);
 	echo "		</td>
 			</tr>
 			<tr>
@@ -244,22 +292,22 @@ switch($_GET[act]){
 			</tr>
 			<tr>
 				<td>Tanggal Masuk</td>
-				<td>";
-						$ta=explode("-",$t['tgl_masuk']);
-						$ttm=$ta[0];
-						$btm=$ta[1];
-						$htm=$ta[2];
-						$now =  date("Y");
-						$saiki = 2000;
+				<td>"; ?>
+				<?php // 		$ta=explode("-",$t['tgl_masuk']);
+				// 		$ttm=$ta[0];
+				// 		$btm=$ta[1];
+				// 		$htm=$ta[2];
+				// 		$now =  date("Y");
+				// 		$saiki = 2000;
 
-						$ht="ht";
-						$bt="bt";
-						$tt="tt";
-				combotgl(1, 31, $ht, $htm);
-				combonamabln(1,12, $bt,$btm);
-				combothn($saiki,$now, $tt,$ttm);
-	echo "
-				</td>
+				// 		$ht="ht";
+				// 		$bt="bt";
+				// 		$tt="tt";
+				// combotgl(1, 31, $ht, $htm);
+				// combonamabln(1,12, $bt,$btm);
+				// combothn($saiki,$now, $tt,$ttm); ?>
+				<input type="text" class='form-controltxt disabled' name="tm" value="<?php echo $t[tgl_masuk]?>" disabled>
+	<?php echo "</td>
 			</tr>
 			<tr>
 				<td>Golongan</td>
@@ -448,7 +496,7 @@ echo "  </div>
 	case "rp":
 	echo "<h2 class='head'>TAMBAH RIWAYAT PENDIDIKAN</h2>
 	  	  <p class='headings'>Kecamatan sentolo</p>
-	<form action='$aksi?module=pegawai&act=rp' method='post' enctype='multipart/form-data' >
+	<form action='$aksi?module=pegawai&act=rp' method='post' enctype='multipart/form-data' id='tambahrp'>
 		<table class='tabelform tabpad'>
 			<tr>
 				<td width='150'></td>
@@ -456,11 +504,17 @@ echo "  </div>
 			</tr>
 			<tr>
 				<td>Tahun</td>
-				<td><input class='form-controltxt' name='tahun' type='text' required><span> format: 2000-2006</span></td>
+				<td>
+					<input class='form-controltxt' name='tahun' type='text' required><span> format: 2000-2006</span>
+					<div class='errorplace'></div>
+				</td>
 			</tr>
 			<tr>
 				<td>Detail Pendidikan</td>
-				<td><textarea class='form-controltextarea' name='dp' rows='5' required></textarea></td>
+				<td>
+					<textarea class='form-controltextarea' name='dp' rows='5' required></textarea>
+					<div class='errorplace'></div>
+				</td>
 			</tr>
 			<tr>
 				<td></td>
@@ -506,7 +560,7 @@ echo "  </div>
 	case "pk":
 	echo "<h2 class='head'>TAMBAH DATA PENGALAMAN KERJA</h2>
 	  	  <p class='headings'>Kecamatan sentolo</p>
-	<form action='$aksi?module=pegawai&act=pk' method='post' enctype='multipart/form-data' >
+	<form action='$aksi?module=pegawai&act=pk' method='post' enctype='multipart/form-data' id='tambahpk' >
 		<table class='tabelform tabpad'>
 			<tr>
 				<td width='150'></td>
@@ -514,11 +568,17 @@ echo "  </div>
 			</tr>
 			<tr>
 				<td>Nama Pekerjaan</td>
-				<td><input class='form-controltxt' name='np' type='text' required><span> </span></td>
+				<td>
+					<input class='form-controltxt' name='np' type='text' required><span> </span>
+					<div class='errorplace'></div>
+				</td>
 			</tr>
 			<tr>
 				<td>Detail Pekerjaan</td>
-				<td><textarea class='form-controltextarea' name='dp' rows='5' required></textarea></td>
+				<td>
+					<textarea class='form-controltextarea' name='dp' rows='5' required></textarea>
+					<div class='errorplace'></div>
+				</td>
 			</tr>
 			<tr>
 				<td></td>
@@ -565,7 +625,7 @@ echo "  </div>
 	case "pwd":
 	echo "<h2 class='head'>GANTI PASSWORD</h2>
 	  	  <p class='headings'>Kecamatan sentolo</p>
-	<form action='$aksi?module=pegawai&act=pwd' method='post' enctype='multipart/form-data' >
+	<form action='$aksi?module=pegawai&act=pwd' method='post' enctype='multipart/form-data' id='editpwd'>
 		<table class='tabelform tabpad'>
 			<tr>
 				<td width='150'></td>
@@ -573,11 +633,17 @@ echo "  </div>
 			</tr>
 			<tr>
 				<td>Password Lama</td>
-				<td><input class='form-controltxt' name='pl' type='password'><span> </span></td>
+				<td>
+					<input class='form-controltxt' name='pl' type='password' required><span> </span>
+					<div class='errorplace'></div>
+				</td>
 			</tr>
 			<tr>
 				<td>Password Baru</td>
-				<td><input class='form-controltxt' name='pb' type='password'><span> </span></td>
+				<td>
+					<input class='form-controltxt' name='pb' type='password' required><span> </span>
+					<div class='errorplace'></div>
+				</td>
 			</tr>
 				<td></td>
 				<td><input type=submit value=Simpan class='btn btn-primary'>
