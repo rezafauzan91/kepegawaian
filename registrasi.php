@@ -290,6 +290,11 @@
 				  	</td>
 				</tr>
 				<tr>
+					<td colspan="2">
+						<div class="alert alert-danger" role="alert">Tanggal masuk yang di masukkan  harap dimasukkan dgn benar, karena tdk bs dirubah setelah di input</div>
+					</td>
+				</tr>
+				<tr>
 					<td>Foto</td>
 					<td>
 						<input name="fupload" id="fupload" type='file' required/>

@@ -1,3 +1,18 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#inputmutasi").validate({ 
+	  	errorPlacement: function (error, element) {
+    		error.appendTo(element.parents("tr").find("div.errorplace"));
+	  	},
+        messages: {
+            ket_mutasi : "Kolom keterangan mutasi harus di isi!",
+        }
+      });
+    $.validator.addMethod('selectcheck', function (value) {
+        return (value != '');
+    });
+});
+</script>
 <?php
 
 $aksi="modul/mutasi/aksi_mutasi.php";
@@ -61,23 +76,23 @@ switch($_GET[act]){
 	$t=mysql_fetch_array($ambil);
 	echo "<h2 class='head'>Edit Data Pegawai</h2>
 		  <p class='headings'>Kecamatan sentolo</p>
-	<form action='$aksi?module=mutasi&act=edit' method='post' enctype='multipart/form-data' >
+	<form action='$aksi?module=mutasi&act=edit' method='post' enctype='multipart/form-data' id='inputmutasi'>
 		<table class='tabelform tabpad' style='text-align:left;'>
 			<tr>
 				<td width='150'>Nip</td>
-				<td><input type'text' class='form-controltxt' value='$t[nip]' readonly></td>
+				<td><input type'text' class='form-controltxt readonly' value='$t[nip]' readonly></td>
 			</tr>
 			<tr>
 				<td>Nama Pegawai</td>
-				<td><input type'text' class='form-controltxt' value='$t[nama]' readonly></td>
+				<td><input type'text' class='form-controltxt readonly' value='$t[nama]' readonly></td>
 			</tr>
 			<tr>
 				<td>Tempat Lahir</td>
-				<td><input type'text' class='form-controltxt' value='$t[tmpt_lahir]' readonly></td>
+				<td><input type'text' class='form-controltxt readonly' value='$t[tmpt_lahir]' readonly></td>
 			</tr>
 			<tr>
 				<td>Tanggal Lahir</td>
-				<td><input type'text' class='form-controltxt' value=".tgl_indo($t['tgl_lahir'])." readonly></td>
+				<td><input type'text' class='form-controltxt readonly' value=".tgl_indo($t['tgl_lahir'])." readonly></td>
 			</tr>
 			<tr>
 				<td>Jenis Kelamin</td>
@@ -92,7 +107,7 @@ switch($_GET[act]){
 			</tr>
 			<tr>
 				<td>Alamat</td>
-				<td><textarea class='form-controltextarea' readonly>$t[alamat]</textarea></td>
+				<td><textarea class='form-controltextarea readonly' readonly>$t[alamat]</textarea></td>
 			</tr>
 			<tr>
 				<td>Tanggal Masuk</td>
@@ -132,7 +147,10 @@ switch($_GET[act]){
 			<tr>
 				<input name='id' type='hidden' value='$_GET[id]'>
 				<td>Keterangan Mutasi</td>
-				<td><textarea class='form-controltextarea' name='ket_mutasi'></textarea></td>
+				<td>
+					<textarea class='form-controltextarea' name='ket_mutasi' required></textarea>
+					<div class='errorplace'></div>
+				</td>
 		</table>
 		<div class='position-btnmutasi'>
 			<input type=submit value=Simpan class='btn btn-primary'>

@@ -1,3 +1,33 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#tgl_pelatihan').Zebra_DatePicker({
+			view: 'years'
+		});
+		$('#simpan').click(function(){
+			var tgl_pelatihan = $('#tgl_pelatihan').val();
+			if(tgl_pelatihan == '') {
+				$('.errorplace_tgllatihan').show();
+				$('#tgl_pelatihan').addClass('error');
+			}else{
+				$('.errorplace_tgllatihan').hide();
+				$('#tgl_pelatihan').removeClass('error');
+			}
+		});
+		$("#simpan-pelatihan").validate({ 
+		  errorPlacement: function (error, element) {
+    		error.appendTo(element.parents("tr").find("div.errorplace"));
+		  },
+          messages: {
+              topik : "Kolom topik pelatihan harus di isi!",
+              ket : "Kolom keterangan harus di isi!",
+              pl : "Kolom penyelenggara harus di isi!"
+          }
+      });
+      $.validator.addMethod('selectcheck', function (value) {
+        return (value != '');
+        });
+	});
+</script>
 <?php
 
 $aksi="modul/pelatihan/aksi_pelatihan.php";
@@ -67,34 +97,41 @@ echo "
 	case "input":
 	echo "<h2 class='head'>Entry Data Pelatihan</h2>
 		  <p class='headings'>Kecamatan sentolo</p>
-	<form action='$aksi?module=pelatihan&act=input' method='post' enctype='multipart/form-data'>
+	<form action='$aksi?module=pelatihan&act=input' method='post' enctype='multipart/form-data' id='simpan-pelatihan'>
 	<div id='cntn-entry'>
 		<table class='tabelform tabpad'>
 			<tr>
-				<td width='150'>Tanggal Pelatihan</td>
-				<td>";
-					$now =  date("Y");
-					$saiki = 2000;
-					combotgl(1, 31, tp, 0);
-					combonamabln(1,12,bp,0);
-					combothn(2000, $now, thp, $now);echo "</td>
-			</tr>
-			<tr>
 				<td>Topik Pelatihan</td>
-				<td><input class='form-controltxt' name='topik' type='text'></td>
+				<td>
+					<input class='form-controltxt' name='topik' type='text' required>
+					<div class='errorplace'></div>
+				</td>
 			</tr>
 			<tr>
 				<td>Penyelenggara</td>
-				<td><input class='form-controltxt' name='pl' type='text'></td>
+				<td>
+					<input class='form-controltxt' name='pl' type='text' required>
+					<div class='errorplace'></div>
+				</td>
+			</tr>
+			<tr>
+				<td width='150'>Tanggal Pelatihan</td>
+				<td>";?>
+				<input name="tgl_pelatihan" id="tgl_pelatihan" class="form-controltxt" type="text">
+				<div class="errorplace_tgllatihan" style="display:none;">Kolom tgl pelatihan tidak boleh kosong!</div>
+			<?php echo "</td>
 			</tr>
 			<tr>
 				<td>Keterangan</td>
-				<td><textarea class='form-controltextarea' name='ket'></textarea></td>
+				<td>
+					<textarea class='form-controltextarea' name='ket' required></textarea>
+					<div class='errorplace'></div>
+				</td>
 			</tr>
 		</table>
 		<div class='list-peserta'>
 			<div id='box-inptplatihan'>
-					<input type=submit value=Simpan class='btn btn-primary'>
+					<input type=submit value=Simpan class='btn btn-primary' id='simpan'>
 					<input type=button value=Batal class='btn btn-danger' onclick=self.history.back()></div>
 		</div>
 	</form>

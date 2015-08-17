@@ -116,24 +116,27 @@ if($module=='pegawai' AND $act=='input' ){
 			header('location:../../sukses.php');
 	}
 }
-	elseif($module=='pegawai' AND $act=='edit' ){
+elseif($module=='pegawai' AND $act=='edit' ){
 			
   $lokasi_file    = $_FILES['fupload']['tmp_name'];
-  $tipe_file      = $_FILES['fupload']['type'];
   $nama_file      = $_FILES['fupload']['name'];
   $acak           = rand(000000,999999);
   $nama_file_unik = $acak.$nama_file;
-	if (!empty($lokasi_file)){  
+
+  if (!empty($lokasi_file)){  
 		
 	$tll="$_POST[tl]-$_POST[btl]-$_POST[ttl]";
-	$tm="$_POST[tt]-$_POST[bt]-$_POST[ht]";
-	Uploadfoto($nama_file_unik);
+	// $tm="$_POST[tt]-$_POST[bt]-$_POST[ht]";
+
+	$vdir_upload    = "../../image_peg/";
+    move_uploaded_file($_FILES["fupload"]["tmp_name"],$vdir_upload . $nama_file_unik);
+
 	mysql_query("update pegawai set nama='$_POST[nama]',
 										 tmpt_lahir='$_POST[tls]',
 										 tgl_lahir='$tll',
 										 jenis_kelamin='$_POST[jk]',
 										 alamat='$_POST[almt]',
-										 tgl_masuk='$tm',
+										 tgl_masuk='$_POST[tm]',
 										 id_gol='$_POST[golongan]',
 										 id_jab='$_POST[jabatan]',
 										 foto='$nama_file_unik'
